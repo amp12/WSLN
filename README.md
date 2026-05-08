@@ -1,6 +1,6 @@
 # WSLN
 
-[`adgda/WSLN`](agda/WSLN.agda) is an Agda library for the well-scoped version of the locally nameless method of representing syntax. The library is parameterised by a Plotkin-style binding signature and makes use of some  (more or less) standard library definitions in [`agda/Prelude`](agda/Prelude.agda). 
+`adgda/WSLN` is an Agda library for the well-scoped version of the locally nameless method of representing syntax. The library is parameterised by a Plotkin-style binding signature and makes use of some  (more or less) standard library definitions in `agda/Prelude`. 
   
 `agda/Adequacy` gives a proof of the adequacy of this style of representation with respect to naïve nameful syntax modulo α-conversion 
  
