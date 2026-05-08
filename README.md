@@ -8,14 +8,14 @@ Examples of WSLN in use:
  
 *  `agda/MLTT` Martin-Löf Type Theory with countably many Agda-style non-cumulative universes closed under Pi-types, natural number type and intensional identity types.
 *  `agda/GST` Decidability of βη-conversion for Gödel's System T using well-scoped locally nameless syntax, proved via a normalization by evaluation argument, in safe Agda.
-* Further examples of binding signatures: untyped λ-calculus (`agda/Lambda.agda`), π-calculus (`agda/PiCalc.agda`)
+* Further examples of binding signatures: untyped λ-calculus (`agda/Lambda.agda`), π-calculus (`agda/PiCalc.agda`).
 
-### Browsable code: [README.html](https://amp12.github.io/WSLN/html/README.html)
-
-### Accompanying paper: 
+### Browsable code: [README](https://amp12.github.io/WSLN/html/README.html)
 
 Checked with Agda version 2.8.0 using flags
   --safe
   --without-K
+  
+### Accompanying paper: 
 
-© Andrew Pitts 2026 
+[© Andrew Pitts 2026] 
