@@ -13,8 +13,8 @@ Examples of WSLN in use:
 ### Browsable code: [README](https://amp12.github.io/WSLN/html/README.html)
 
 Checked with Agda version 2.8.0 using flags
-  --safe
-  --without-K
+  `--safe`
+  `--without-K`
   
 ### Accompanying paper: 
 
