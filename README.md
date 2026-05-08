@@ -10,7 +10,7 @@ Examples of WSLN in use:
 *  [`agda/GST`](agda/GST.agda) Decidability of βη-conversion for Gödel's System T using well-scoped locally nameless syntax, proved via a normalization by evaluation argument, in safe Agda.
 * Further examples of binding signatures: untyped λ-calculus ([`agda/Lambda.agda`](agda/Lambda.agda)), π-calculus ([`agda/PiCalc.agda`](agda/PiCalc.agda))
 
-### HTML rendering of the code: [README.html](https://amp12.github.io/WSLN/html/README.html)
+### Browsable code: [README.html](https://amp12.github.io/WSLN/html/README.html)
 
 ### Accompanying paper: 
 
