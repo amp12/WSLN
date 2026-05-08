@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html><head><meta charset="utf-8"><title>README</title><link rel="stylesheet" href="Agda.css"></head><body><pre class="Agda"><a id="1" class="Keyword">module</a> <a id="8" href="html/README.html" class="Module">README</a> <a id="15" class="Keyword">where</a>
+
+<a id="22" class="Comment">{- WSLN is a library for the well-scoped version of the locally
+  nameless method of representing syntax. The library is parameterised
+  by a Plotkin-style binding signature. We give a proof of the
+  adequacy of this style of representation with respect to naïve
+  nameful syntax modulo α-conversion and some examples of its use.
+
+Checked with Agda version 2.8.0 using flags
+  --safe
+  --without-K
+
+© Andrew Pitts 2026 -}</a>
+
+<a id="445" class="Comment">-- Some (more or less) standard library definitions</a>
+<a id="497" class="Keyword">open</a> <a id="502" class="Keyword">import</a> <a id="509" href="html/Prelude.html" class="Module">Prelude</a>
+
+<a id="518" class="Comment">-- The Well-Scoped Locally Nameless library</a>
+<a id="562" class="Keyword">open</a> <a id="567" class="Keyword">import</a> <a id="574" href="html/WSLN.html" class="Module">WSLN</a>
+
+<a id="580" class="Comment">-- Adequacy of the well scoped locally nameless representation with</a>
+<a id="648" class="Comment">-- repect to nameful terms modulo α-equivalence (including</a>
+<a id="707" class="Comment">-- correctness for capture-avoiding substitution)</a>
+<a id="757" class="Keyword">open</a> <a id="762" class="Keyword">import</a> <a id="769" href="html/Adequacy.html" class="Module">Adequacy</a>
+
+<a id="779" class="Comment">-- Example: well-scoped locally nameless representation of untyped</a>
+<a id="846" class="Comment">-- lambda calculus</a>
+<a id="865" class="Keyword">open</a> <a id="870" class="Keyword">import</a> <a id="877" href="html/Lambda.html" class="Module">Lambda</a>
+
+<a id="885" class="Comment">-- Example : well-scoped locally nameless representation of</a>
+<a id="945" class="Comment">-- π-calculus processes, structural congruence and reduction</a>
+<a id="1006" class="Keyword">open</a> <a id="1011" class="Keyword">import</a> <a id="1018" href="html/PiCalc.html" class="Module">PiCalc</a>
+
+<a id="1026" class="Comment">-- Example: basic meta-theory for intensional Martin-Löf Type Theory</a>
+<a id="1095" class="Comment">-- with countably many Agda-style non-cumulative universes closed</a>
+<a id="1161" class="Comment">-- under Pi-types, natural number type and intensional identity types.</a>
+<a id="1232" class="Keyword">open</a> <a id="1237" class="Keyword">import</a> <a id="1244" href="html/MLTT.html" class="Module">MLTT</a>
+
+<a id="1250" class="Comment">-- Example: decidability of βη-conversion for Gödel&#39;s System T proved</a>
+<a id="1320" class="Comment">-- in safe Agda</a>
+<a id="1336" class="Keyword">open</a> <a id="1341" class="Keyword">import</a> <a id="1348" href="html/GST.html" class="Module">GST</a>
+</pre></body></html>
