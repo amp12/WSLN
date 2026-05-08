@@ -1,0 +1,34 @@
+<!DOCTYPE HTML>
+<html><head><meta charset="utf-8"><title>GST</title><link rel="stylesheet" href="Agda.css"></head><body><pre class="Agda"><a id="1" class="Keyword">module</a> <a id="8" href="GST.html" class="Module">GST</a> <a id="12" class="Keyword">where</a>
+
+<a id="19" class="Comment">{- An illustration of using the WSLN library:
+
+Decidability of βη-conversion for Gödel&#39;s System T using well-scoped
+locally nameless syntax, proved via a normalization by evaluation
+argument, in safe Agda
+
+(flags: --without-K --safe)
+
+© Andrew Pitts 2025 -}</a>
+
+<a id="278" class="Keyword">open</a> <a id="283" class="Keyword">import</a> <a id="290" href="WSLN.html" class="Module">WSLN</a> <a id="295" class="Keyword">public</a>
+
+<a id="303" class="Keyword">open</a> <a id="308" class="Keyword">import</a> <a id="315" href="GST.Syntax.html" class="Module">GST.Syntax</a> <a id="326" class="Keyword">public</a>
+<a id="333" class="Keyword">open</a> <a id="338" class="Keyword">import</a> <a id="345" href="GST.Context.html" class="Module">GST.Context</a> <a id="357" class="Keyword">public</a>
+<a id="364" class="Keyword">open</a> <a id="369" class="Keyword">import</a> <a id="376" href="GST.TypeSystem.html" class="Module">GST.TypeSystem</a> <a id="391" class="Keyword">public</a>
+<a id="398" class="Keyword">open</a> <a id="403" class="Keyword">import</a> <a id="410" href="GST.WellScoped.html" class="Module">GST.WellScoped</a> <a id="425" class="Keyword">public</a>
+<a id="432" class="Keyword">open</a> <a id="437" class="Keyword">import</a> <a id="444" href="GST.Setoid.html" class="Module">GST.Setoid</a> <a id="455" class="Keyword">public</a>
+<a id="462" class="Keyword">open</a> <a id="467" class="Keyword">import</a> <a id="474" href="GST.Renaming.html" class="Module">GST.Renaming</a> <a id="487" class="Keyword">public</a>
+<a id="494" class="Keyword">open</a> <a id="499" class="Keyword">import</a> <a id="506" href="GST.Substitution.html" class="Module">GST.Substitution</a> <a id="523" class="Keyword">public</a>
+<a id="530" class="Keyword">open</a> <a id="535" class="Keyword">import</a> <a id="542" href="GST.Admissible.html" class="Module">GST.Admissible</a> <a id="557" class="Keyword">public</a>
+<a id="564" class="Keyword">open</a> <a id="569" class="Keyword">import</a> <a id="576" href="GST.UniqueTypes.html" class="Module">GST.UniqueTypes</a> <a id="592" class="Keyword">public</a>
+<a id="599" class="Keyword">open</a> <a id="604" class="Keyword">import</a> <a id="611" href="GST.NormalForm.html" class="Module">GST.NormalForm</a> <a id="626" class="Keyword">public</a>
+<a id="633" class="Keyword">open</a> <a id="638" class="Keyword">import</a> <a id="645" href="GST.Presheaf.html" class="Module">GST.Presheaf</a> <a id="658" class="Keyword">public</a>
+<a id="665" class="Keyword">open</a> <a id="670" class="Keyword">import</a> <a id="677" href="GST.TypeSemantics.html" class="Module">GST.TypeSemantics</a> <a id="695" class="Keyword">public</a>
+<a id="702" class="Keyword">open</a> <a id="707" class="Keyword">import</a> <a id="714" href="GST.ReifyReflect.html" class="Module">GST.ReifyReflect</a> <a id="731" class="Keyword">public</a>
+<a id="738" class="Keyword">open</a> <a id="743" class="Keyword">import</a> <a id="750" href="GST.TermSemantics.html" class="Module">GST.TermSemantics</a> <a id="768" class="Keyword">public</a>
+<a id="775" class="Keyword">open</a> <a id="780" class="Keyword">import</a> <a id="787" href="GST.LogicalRelation.html" class="Module">GST.LogicalRelation</a> <a id="807" class="Keyword">public</a>
+<a id="814" class="Keyword">open</a> <a id="819" class="Keyword">import</a> <a id="826" href="GST.Sound.html" class="Module">GST.Sound</a> <a id="836" class="Keyword">public</a>
+<a id="843" class="Keyword">open</a> <a id="848" class="Keyword">import</a> <a id="855" href="GST.Normalization.html" class="Module">GST.Normalization</a> <a id="873" class="Keyword">public</a>
+<a id="880" class="Keyword">open</a> <a id="885" class="Keyword">import</a> <a id="892" href="GST.DecidableConv.html" class="Module">GST.DecidableConv</a> <a id="910" class="Keyword">public</a>
+</pre></body></html>

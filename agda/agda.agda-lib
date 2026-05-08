@@ -1,0 +1,3 @@
+depend: 
+include: .
+flags: --safe --without-K

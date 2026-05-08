@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html><head><meta charset="utf-8"><title>Lambda</title><link rel="stylesheet" href="Agda.css"></head><body><pre class="Agda"><a id="1" class="Keyword">module</a> <a id="8" href="Lambda.html" class="Module">Lambda</a> <a id="15" class="Keyword">where</a>
+
+<a id="22" class="Comment">{- Well-scoped locally nameless representation of untyped lambda
+calculus. -}</a>
+
+<a id="101" class="Keyword">open</a> <a id="106" class="Keyword">import</a> <a id="113" href="Prelude.html" class="Module">Prelude</a>
+<a id="121" class="Keyword">open</a> <a id="126" class="Keyword">import</a> <a id="133" href="WSLN.html" class="Module">WSLN</a> <a id="138" class="Keyword">public</a>
+
+<a id="146" class="Comment">----------------------------------------------------------------------</a>
+<a id="217" class="Comment">-- Well scoped, locally nameless lambda terms</a>
+<a id="263" class="Comment">----------------------------------------------------------------------</a>
+<a id="334" class="Keyword">instance</a>
+  <a id="WSLN"></a><a id="345" href="Lambda.html#345" class="Function">WSLN</a> <a id="350" class="Symbol">:</a> <a id="352" href="WSLN.Sig.Sig.html#299" class="Record">Sig</a>
+  <a id="358" href="Lambda.html#345" class="Function">WSLN</a> <a id="363" class="Symbol">=</a> <a id="365" href="WSLN.Sig.Sig.html#330" class="InductiveConstructor">mkSig</a> <a id="371" href="Lambda.html#430" class="Datatype">OpWSLN</a> <a id="378" href="Lambda.html#570" class="Function">arWSLN</a>
+    <a id="389" class="Keyword">module</a> <a id="396" href="Lambda.html#396" class="Module">_</a> <a id="398" class="Keyword">where</a>
+    <a id="408" class="Comment">-- Operators</a>
+    <a id="425" class="Keyword">data</a> <a id="430" href="Lambda.html#430" class="Datatype">OpWSLN</a> <a id="437" class="Symbol">:</a> <a id="439" href="Agda.Primitive.html#388" class="Primitive">Set</a> <a id="443" class="Keyword">where</a>
+      <a id="455" class="Comment">-- Function abstraction</a>
+      <a id="485" href="Lambda.html#485" class="InductiveConstructor">′lm′</a> <a id="490" class="Symbol">:</a> <a id="492" href="Lambda.html#430" class="Datatype">OpWSLN</a>
+      <a id="505" class="Comment">-- Function application</a>
+      <a id="535" href="Lambda.html#535" class="InductiveConstructor">′ap′</a> <a id="540" class="Symbol">:</a>  <a id="543" href="Lambda.html#430" class="Datatype">OpWSLN</a>
+
+    <a id="555" class="Comment">-- Arities</a>
+    <a id="570" href="Lambda.html#570" class="Function">arWSLN</a> <a id="577" class="Symbol">:</a> <a id="579" href="Lambda.html#430" class="Datatype">OpWSLN</a> <a id="586" class="Symbol">→</a> <a id="588" href="Agda.Builtin.List.html#147" class="Datatype">List</a> <a id="593" href="Prelude.Nat.html#392" class="Datatype">ℕ</a>
+    <a id="599" href="Lambda.html#570" class="Function">arWSLN</a> <a id="606" href="Lambda.html#485" class="InductiveConstructor">′lm′</a> <a id="611" class="Symbol">=</a> <a id="613" class="Number">1</a> <a id="615" href="Prelude.List.html#130" class="InductiveConstructor Operator">::</a> <a id="618" href="Agda.Builtin.List.html#184" class="InductiveConstructor">[]</a>
+    <a id="625" href="Lambda.html#570" class="Function">arWSLN</a> <a id="632" href="Lambda.html#535" class="InductiveConstructor">′ap′</a> <a id="637" class="Symbol">=</a> <a id="639" class="Number">0</a> <a id="641" href="Prelude.List.html#130" class="InductiveConstructor Operator">::</a> <a id="644" class="Number">0</a> <a id="646" href="Prelude.List.html#130" class="InductiveConstructor Operator">::</a> <a id="649" href="Agda.Builtin.List.html#184" class="InductiveConstructor">[]</a>
+
+<a id="653" class="Comment">-- Notation</a>
+<a id="665" class="Keyword">infixl</a> <a id="672" class="Number">7</a> <a id="674" href="Lambda.html#704" class="InductiveConstructor Operator">_∙_</a>
+<a id="678" class="Keyword">pattern</a> <a id="𝐯"></a><a id="686" href="Lambda.html#686" class="InductiveConstructor">𝐯</a> <a id="688" href="Lambda.html#694" class="Bound">x</a> <a id="690" class="Symbol">=</a> <a id="692" href="WSLN.Sig.Term.html#683" class="InductiveConstructor">𝐚</a> <a id="694" href="Lambda.html#694" class="Bound">x</a>
+<a id="696" class="Keyword">pattern</a> <a id="_∙_"></a><a id="704" href="Lambda.html#704" class="InductiveConstructor Operator">_∙_</a> <a id="708" href="Lambda.html#722" class="Bound">b</a> <a id="710" href="Lambda.html#727" class="Bound">a</a> <a id="712" class="Symbol">=</a> <a id="714" href="WSLN.Sig.Term.html#725" class="InductiveConstructor">𝐨</a> <a id="716" href="Lambda.html#535" class="InductiveConstructor">′ap′</a> <a id="721" class="Symbol">(</a><a id="722" href="Lambda.html#722" class="Bound">b</a> <a id="724" class="InductiveConstructor Operator">::</a> <a id="727" href="Lambda.html#727" class="Bound">a</a> <a id="729" class="InductiveConstructor Operator">::</a> <a id="732" class="InductiveConstructor">[]</a><a id="734" class="Symbol">)</a>
+<a id="736" class="Keyword">pattern</a> <a id="𝛌"></a><a id="744" href="Lambda.html#744" class="InductiveConstructor">𝛌</a> <a id="746" href="Lambda.html#758" class="Bound">a</a> <a id="748" class="Symbol">=</a> <a id="750" href="WSLN.Sig.Term.html#725" class="InductiveConstructor">𝐨</a> <a id="752" href="Lambda.html#485" class="InductiveConstructor">′lm′</a> <a id="757" class="Symbol">(</a><a id="758" href="Lambda.html#758" class="Bound">a</a> <a id="760" class="InductiveConstructor Operator">::</a> <a id="763" class="InductiveConstructor">[]</a><a id="765" class="Symbol">)</a>
+
+<a id="768" class="Comment">-- Lambda terms are the locally closed expressions</a>
+<a id="Lam"></a><a id="819" href="Lambda.html#819" class="Function">Lam</a> <a id="823" class="Symbol">:</a> <a id="825" href="Agda.Primitive.html#388" class="Primitive">Set</a>
+<a id="829" href="Lambda.html#819" class="Function">Lam</a> <a id="833" class="Symbol">=</a> <a id="835" href="WSLN.Sig.Term.html#392" class="Datatype Operator">Trm[_]</a> <a id="842" class="Number">0</a>
+
+<a id="845" class="Comment">----------------------------------------------------------------------</a>
+<a id="916" class="Comment">-- Example term: λ x . λ y . x (y  z)</a>
+<a id="954" class="Comment">----------------------------------------------------------------------</a>
+<a id="1025" class="Keyword">module</a> <a id="1032" href="Lambda.html#1032" class="Module">_</a> <a id="1034" class="Symbol">(</a><a id="1035" href="Lambda.html#1035" class="Bound">z</a> <a id="1037" class="Symbol">:</a> <a id="1039" href="WSLN.Atom.html#204" class="Function">𝔸</a><a id="1040" class="Symbol">)</a> <a id="1042" class="Keyword">where</a>
+  <a id="1050" href="Lambda.html#1050" class="Function">ex</a> <a id="1053" class="Symbol">:</a> <a id="1055" href="Lambda.html#819" class="Function">Lam</a>
+  <a id="1061" href="Lambda.html#1050" class="Function">ex</a> <a id="1064" class="Symbol">=</a>
+    <a id="1070" href="WSLN.Sig.Term.html#725" class="InductiveConstructor">𝐨</a> <a id="1072" href="Lambda.html#485" class="InductiveConstructor">′lm′</a> <a id="1077" class="Symbol">(</a>
+      <a id="1085" href="WSLN.Sig.Term.html#725" class="InductiveConstructor">𝐨</a> <a id="1087" href="Lambda.html#485" class="InductiveConstructor">′lm′</a> <a id="1092" class="Symbol">(</a>
+        <a id="1102" href="WSLN.Sig.Term.html#725" class="InductiveConstructor">𝐨</a> <a id="1104" href="Lambda.html#535" class="InductiveConstructor">′ap′</a> <a id="1109" class="Symbol">(</a>
+          <a id="1121" href="WSLN.Sig.Term.html#639" class="InductiveConstructor">𝐢</a> <a id="1123" class="Symbol">(</a><a id="1124" href="Prelude.Fin.html#424" class="InductiveConstructor">suc</a> <a id="1128" href="Prelude.Fin.html#376" class="InductiveConstructor">zero</a><a id="1132" class="Symbol">)</a> <a id="1134" href="WSLN.Sig.Term.html#876" class="InductiveConstructor Operator">::</a>
+          <a id="1147" href="WSLN.Sig.Term.html#725" class="InductiveConstructor">𝐨</a> <a id="1149" href="Lambda.html#535" class="InductiveConstructor">′ap′</a> <a id="1154" class="Symbol">(</a>
+            <a id="1168" href="WSLN.Sig.Term.html#639" class="InductiveConstructor">𝐢</a> <a id="1170" href="Prelude.Fin.html#376" class="InductiveConstructor">zero</a> <a id="1175" href="WSLN.Sig.Term.html#876" class="InductiveConstructor Operator">::</a>
+            <a id="1190" href="Lambda.html#686" class="InductiveConstructor">𝐯</a> <a id="1192" href="Lambda.html#1035" class="Bound">z</a> <a id="1194" href="WSLN.Sig.Term.html#876" class="InductiveConstructor Operator">::</a> <a id="1197" href="WSLN.Sig.Term.html#854" class="InductiveConstructor">[]</a><a id="1199" class="Symbol">)</a>
+          <a id="1211" href="WSLN.Sig.Term.html#876" class="InductiveConstructor Operator">::</a> <a id="1214" href="WSLN.Sig.Term.html#854" class="InductiveConstructor">[]</a><a id="1216" class="Symbol">)</a>
+        <a id="1226" href="WSLN.Sig.Term.html#876" class="InductiveConstructor Operator">::</a> <a id="1229" href="WSLN.Sig.Term.html#854" class="InductiveConstructor">[]</a><a id="1231" class="Symbol">)</a>
+      <a id="1239" href="WSLN.Sig.Term.html#876" class="InductiveConstructor Operator">::</a> <a id="1242" href="WSLN.Sig.Term.html#854" class="InductiveConstructor">[]</a><a id="1244" class="Symbol">)</a>
+
+  <a id="1249" href="Lambda.html#1249" class="Function">ex&#39;</a> <a id="1253" class="Symbol">:</a> <a id="1255" href="Lambda.html#819" class="Function">Lam</a>
+  <a id="1261" href="Lambda.html#1249" class="Function">ex&#39;</a> <a id="1265" class="Symbol">=</a> <a id="1267" href="Lambda.html#744" class="InductiveConstructor">𝛌</a> <a id="1269" class="Symbol">(</a><a id="1270" href="Lambda.html#744" class="InductiveConstructor">𝛌</a> <a id="1272" class="Symbol">(</a><a id="1273" href="WSLN.Sig.Term.html#1050" class="InductiveConstructor">i1</a> <a id="1276" href="Lambda.html#704" class="InductiveConstructor Operator">∙</a> <a id="1278" class="Symbol">(</a><a id="1279" href="WSLN.Sig.Term.html#1028" class="InductiveConstructor">i0</a> <a id="1282" href="Lambda.html#704" class="InductiveConstructor Operator">∙</a> <a id="1284" href="Lambda.html#686" class="InductiveConstructor">𝐯</a> <a id="1286" href="Lambda.html#1035" class="Bound">z</a><a id="1287" class="Symbol">)))</a>
+
+  <a id="1294" href="Lambda.html#1294" class="Function">ex≡ex&#39;</a> <a id="1301" class="Symbol">:</a> <a id="1303" href="Lambda.html#1050" class="Function">ex</a> <a id="1306" href="Prelude.Identity.html#248" class="Datatype Operator">≡</a> <a id="1308" href="Lambda.html#1249" class="Function">ex&#39;</a>
+  <a id="1314" href="Lambda.html#1294" class="Function">ex≡ex&#39;</a> <a id="1321" class="Symbol">=</a> <a id="1323" href="Prelude.Identity.html#311" class="InductiveConstructor">refl</a>
+</pre></body></html>

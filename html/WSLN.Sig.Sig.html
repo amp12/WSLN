@@ -1,0 +1,20 @@
+<!DOCTYPE HTML>
+<html><head><meta charset="utf-8"><title>WSLN.Sig.Sig</title><link rel="stylesheet" href="Agda.css"></head><body><pre class="Agda"><a id="1" class="Keyword">module</a> <a id="8" href="WSLN.Sig.Sig.html" class="Module">WSLN.Sig.Sig</a> <a id="21" class="Keyword">where</a>
+
+<a id="28" class="Keyword">open</a> <a id="33" class="Keyword">import</a> <a id="40" href="Prelude.html" class="Module">Prelude</a>
+
+<a id="49" class="Keyword">open</a> <a id="54" class="Keyword">import</a> <a id="61" href="WSLN.Index.html" class="Module">WSLN.Index</a>
+<a id="72" class="Keyword">open</a> <a id="77" class="Keyword">import</a> <a id="84" href="WSLN.Atom.html" class="Module">WSLN.Atom</a>
+<a id="94" class="Keyword">open</a> <a id="99" class="Keyword">import</a> <a id="106" href="WSLN.Fresh.html" class="Module">WSLN.Fresh</a>
+
+<a id="118" class="Comment">----------------------------------------------------------------------</a>
+<a id="189" class="Comment">-- Plotkin&#39;s binding signatures</a>
+<a id="221" class="Comment">----------------------------------------------------------------------</a>
+<a id="292" class="Keyword">record</a> <a id="Sig"></a><a id="299" href="WSLN.Sig.Sig.html#299" class="Record">Sig</a> <a id="303" class="Symbol">:</a> <a id="305" href="Agda.Primitive.html#388" class="Primitive">Set₁</a> <a id="310" class="Keyword">where</a>
+  <a id="318" class="Keyword">constructor</a> <a id="mkSig"></a><a id="330" href="WSLN.Sig.Sig.html#330" class="InductiveConstructor">mkSig</a>
+  <a id="338" class="Keyword">field</a>
+    <a id="Sig.Op"></a><a id="348" href="WSLN.Sig.Sig.html#348" class="Field">Op</a> <a id="351" class="Symbol">:</a> <a id="353" href="Agda.Primitive.html#388" class="Primitive">Set</a>
+    <a id="Sig.ar"></a><a id="361" href="WSLN.Sig.Sig.html#361" class="Field">ar</a> <a id="364" class="Symbol">:</a> <a id="366" href="WSLN.Sig.Sig.html#348" class="Field">Op</a> <a id="369" class="Symbol">→</a> <a id="371" href="Agda.Builtin.List.html#147" class="Datatype">List</a> <a id="376" href="Prelude.Nat.html#392" class="Datatype">ℕ</a>
+
+<a id="379" class="Keyword">open</a> <a id="384" href="WSLN.Sig.Sig.html#299" class="Module">Sig</a> <a id="388" class="Keyword">public</a>
+</pre></body></html>
