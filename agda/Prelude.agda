@@ -1,5 +1,8 @@
 module Prelude where
 
+{- Some (more or less) standard library definitions
+   for use with the WSLN library. -}
+
 open import Prelude.Decidable public
 open import Prelude.Empty public
 open import Prelude.Equivalence public
