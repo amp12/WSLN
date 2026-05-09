@@ -29,7 +29,9 @@ instance
     -- function application takes two aruments, each binding no names
     arWSLN ′ap′ = 0 :: 0 :: []
 
-{- WSLN provides an ℕ-indexed type Trm[ n ] of n-terms over the signature with constructors 𝐢 for scoped deBruijn indices (Fin n), 𝐚 for atomic names (𝔸) and compound terms 𝐨.
+{- WSLN provides an ℕ-indexed type Trm[ n ] of n-terms over the
+signature with constructors 𝐢 for scoped deBruijn indices (Fin n), 𝐚
+for atomic names (𝔸) and 𝐨 for compound terms built using operators.
 
 λ-terms modulo α-equivalence are in bijection with the locally
 closed (n = 0) terms. Trm[ 0 ] is abbreviated to Trm. -}
@@ -45,7 +47,6 @@ pattern _∙_ b a = 𝐨 ′ap′ (b :: a :: [])
 
 -- Example term, corresponding to λ x . λ y . x (y  z)
 module _
-  -- 𝔸 is the type of atoms (a copy of ℕ)
   (z : 𝔸)
   where
   ex : Trm
