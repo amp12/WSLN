@@ -16,9 +16,7 @@ Checked with Agda version 2.8.0 using flags
   `--safe`
   `--without-K`
   
-### Accompanying paper: 
-
-[© Andrew Pitts 2026] 
+### Accompanying paper:
 
 ### Example of using the WSLN library (`agda/Lambda.agda`)
 
