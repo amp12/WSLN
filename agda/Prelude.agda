@@ -3,9 +3,9 @@ module Prelude where
 {- Some (more or less) standard library definitions
    for use with the WSLN library. -}
 
+open import Prelude.BiImplication public
 open import Prelude.Decidable public
 open import Prelude.Empty public
-open import Prelude.Equivalence public
 open import Prelude.Fin public
 open import Prelude.FinInt public
 open import Prelude.Function public

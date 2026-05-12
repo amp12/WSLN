@@ -6,6 +6,7 @@ open import Prelude.Function
 open import Prelude.Decidable
 open import Prelude.Identity
 open import Prelude.Notation
+open import Prelude.Product
 
 ----------------------------------------------------------------------
 -- Subsingletons
@@ -27,6 +28,21 @@ record isSet {l : Level}(A :  Set l) : Set l where
 open isSet ⦃ ... ⦄ public
 
 {-# DISPLAY isSet.!≡ _ = !≡ #-}
+
+----------------------------------------------------------------------
+-- Conjunction
+----------------------------------------------------------------------
+instance
+  isProp∧ :
+    {l m : Level}
+    {A : Set l}
+    ⦃ _ : isProp A ⦄
+    {B : Set m}
+    ⦃ _ : isProp B ⦄
+    → --------------
+    isProp (A ∧ B)
+  ! ⦃ isProp∧ ⦄ (x , y) (x' , y')
+    rewrite ! x x' | ! y y' = refl
 
 ----------------------------------------------------------------------
 -- Hedberg's Lemma

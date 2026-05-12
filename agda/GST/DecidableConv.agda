@@ -133,7 +133,7 @@ condEq? :
   Dec (Γ ⊢ a ＝ a' ∶ A)
 
 condEq? {Γ} (q , q') = Dec↔ {A = (nf Γ q ≡ nf Γ q')}
-  (↔i (NF1' Γ q q') (NF2 Γ q q'))
+  (NF1' Γ q q' , NF2 Γ q q')
   (nf Γ q ≐ nf Γ q')
 
 ⊢＝? Γ A a a' = condDec

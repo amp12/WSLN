@@ -1,11 +1,12 @@
 module Prelude.Decidable where
 
+open import Prelude.BiImplication
 open import Prelude.Empty
-open import Prelude.Equivalence
 open import Prelude.Function
 open import Prelude.Identity
 open import Prelude.Level
 open import Prelude.Notation
+open import Prelude.Product
 
 ----------------------------------------------------------------------
 -- Decidable inhabitation
@@ -45,7 +46,7 @@ Dec↔ :
   → -----------
   Dec A → Dec B
 
-Dec↔ e p = condDec (e °$_) p (yes ∘ e $_)
+Dec↔ e p = condDec (π₂ e) p (yes ∘ π₁ e)
 
 ----------------------------------------------------------------------
 -- Decidable equality
@@ -60,3 +61,36 @@ open hasDecEq {{...}} public
 {-# DISPLAY hasDecEq._≐_ _ x y = x ≐ y #-}
 
 pattern equ = yes refl
+
+----------------------------------------------------------------------
+-- Decidable conjunction
+----------------------------------------------------------------------
+Dec∧ :
+  {l : Level}
+  {A B : Set l}
+  (_ : Dec A)
+  (_ : Dec B)
+  → -----------
+  Dec( A ∧ B)
+
+Dec∧ d e with d
+... | no ¬p = no λ{(a , _) → ¬p a}
+... | yes a with e
+...         | no ¬p = no λ{(_ , b) → ¬p b}
+...         | yes b = yes (a , b)
+
+----------------------------------------------------------------------
+-- Cartesian product of sets with deciable equality
+----------------------------------------------------------------------
+instance
+  hasDecEq× :
+    {l : Level}
+    {A A' : Set l}
+    ⦃ _ : hasDecEq A ⦄
+    ⦃ _ : hasDecEq A' ⦄
+    → -----------------
+    hasDecEq (A × A')
+  _≐_ ⦃ hasDecEq× ⦄ (x , x') (y , y') with x ≐ y | x' ≐ y'
+  ... | no ¬e | _      = no λ{refl → ¬e refl}
+  ... | yes _ | no ¬e' = no λ{refl → ¬e' refl}
+  ... | equ   | equ    = equ

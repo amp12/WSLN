@@ -1,6 +1,5 @@
 module Prelude.Empty where
 
-open import Prelude.Equivalence
 open import Prelude.Level
 open import Prelude.Identity
 
@@ -31,17 +30,17 @@ data Ø {ℓ : Level} : Set ℓ where
 
 ¬ {l} A = A → Ø{l}
 
-¬↔ :
-  {l : Level}
-  {A B : Set l}
-  (_ : A ↔ B)
-  → -----------
-  ¬ A ↔ ¬ B
+-- ¬↔ :
+--   {l : Level}
+--   {A B : Set l}
+--   (_ : A ↔ B)
+--   → -----------
+--   ¬ A ↔ ¬ B
 
-((¬↔ e)  $ ¬x) y = ¬x (e °$ y)
-((¬↔ e) °$ ¬y) x = ¬y (e  $ x)
+-- ((¬↔ e)  $ ¬x) y = ¬x (e °$ y)
+-- ((¬↔ e) °$ ¬y) x = ¬y (e  $ x)
 
 
 
-⊥-elim : ∀ {w} {Whatever : Set w} → .⊥ → Whatever
-⊥-elim ()
+-- ⊥-elim : ∀ {w} {Whatever : Set w} → .⊥ → Whatever
+-- ⊥-elim ()
