@@ -23,4 +23,4 @@ When using interactive theorem provers based on dependent type theory to define 
  
 *  [Martin-Löf Type Theory](https://github.com/amp12/WSLN/blob/main/agda/MLTT.agda) with countably many Agda-style non-cumulative universes closed under Pi-types, natural number type and intensional identity types.
 
-*  `agda/GST` Decidability of βη-conversion for [Gödel's System T](https://github.com/amp12/WSLN/blob/main/agda/GST.agda) using well-scoped locally nameless syntax, proved via a normalization by evaluation argument, in safe Agda.
+*  [Gödel's System T](https://github.com/amp12/WSLN/blob/main/agda/GST.agda). Decidability of βη-conversion using well-scoped locally nameless syntax, proved via a normalization by evaluation argument, in safe Agda.
