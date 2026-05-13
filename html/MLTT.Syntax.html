@@ -10,7 +10,7 @@
 <a id="156" class="Comment">----------------------------------------------------------------------</a>
 <a id="Lvl"></a><a id="227" href="MLTT.Syntax.html#227" class="Function">Lvl</a> <a id="231" class="Symbol">:</a> <a id="233" href="Agda.Primitive.html#388" class="Primitive">Set</a>
 
-<a id="238" href="MLTT.Syntax.html#227" class="Function">Lvl</a> <a id="242" class="Symbol">=</a> <a id="244" href="Prelude.Nat.html#392" class="Datatype">ℕ</a>
+<a id="238" href="MLTT.Syntax.html#227" class="Function">Lvl</a> <a id="242" class="Symbol">=</a> <a id="244" href="Prelude.Nat.html#395" class="Datatype">ℕ</a>
 
 <a id="247" class="Comment">----------------------------------------------------------------------</a>
 <a id="318" class="Comment">-- Signature for types and terms</a>
@@ -41,7 +41,7 @@
   <a id="OpMLTT.′natrec′"></a><a id="902" href="MLTT.Syntax.html#902" class="InductiveConstructor">′natrec′</a> <a id="911" class="Symbol">:</a> <a id="913" href="MLTT.Syntax.html#440" class="Datatype">OpMLTT</a>
 
 <a id="921" class="Comment">-- Arities</a>
-<a id="arMLTT"></a><a id="932" href="MLTT.Syntax.html#932" class="Function">arMLTT</a> <a id="939" class="Symbol">:</a> <a id="941" href="MLTT.Syntax.html#440" class="Datatype">OpMLTT</a> <a id="948" class="Symbol">→</a> <a id="950" href="Agda.Builtin.List.html#147" class="Datatype">List</a> <a id="955" href="Prelude.Nat.html#392" class="Datatype">ℕ</a>
+<a id="arMLTT"></a><a id="932" href="MLTT.Syntax.html#932" class="Function">arMLTT</a> <a id="939" class="Symbol">:</a> <a id="941" href="MLTT.Syntax.html#440" class="Datatype">OpMLTT</a> <a id="948" class="Symbol">→</a> <a id="950" href="Agda.Builtin.List.html#147" class="Datatype">List</a> <a id="955" href="Prelude.Nat.html#395" class="Datatype">ℕ</a>
 <a id="957" href="MLTT.Syntax.html#932" class="Function">arMLTT</a> <a id="964" class="Symbol">(</a><a id="965" href="MLTT.Syntax.html#480" class="InductiveConstructor">′Univ′</a> <a id="972" href="MLTT.Syntax.html#972" class="Bound">l</a><a id="973" class="Symbol">)</a> <a id="975" class="Symbol">=</a> <a id="977" href="Agda.Builtin.List.html#184" class="InductiveConstructor">[]</a>
 <a id="980" href="MLTT.Syntax.html#932" class="Function">arMLTT</a> <a id="987" class="Symbol">(</a><a id="988" href="MLTT.Syntax.html#533" class="InductiveConstructor">′Pi′</a> <a id="993" href="MLTT.Syntax.html#993" class="Bound">l</a> <a id="995" href="MLTT.Syntax.html#995" class="Bound">l&#39;</a><a id="997" class="Symbol">)</a> <a id="999" class="Symbol">=</a> <a id="1001" class="Number">0</a> <a id="1003" href="Prelude.List.html#130" class="InductiveConstructor Operator">::</a> <a id="1006" class="Number">1</a> <a id="1008" href="Prelude.List.html#130" class="InductiveConstructor Operator">::</a> <a id="1011" href="Agda.Builtin.List.html#184" class="InductiveConstructor">[]</a>
 <a id="1014" href="MLTT.Syntax.html#932" class="Function">arMLTT</a> <a id="1021" href="MLTT.Syntax.html#588" class="InductiveConstructor">′lam′</a> <a id="1027" class="Symbol">=</a> <a id="1029" class="Number">0</a> <a id="1031" href="Prelude.List.html#130" class="InductiveConstructor Operator">::</a> <a id="1034" class="Number">1</a> <a id="1036" href="Prelude.List.html#130" class="InductiveConstructor Operator">::</a> <a id="1039" href="Agda.Builtin.List.html#184" class="InductiveConstructor">[]</a>
@@ -64,7 +64,7 @@
 <a id="1413" class="Comment">-- Terms of Martin-Löf Type Theory</a>
 <a id="1448" class="Comment">----------------------------------------------------------------------</a>
 <a id="1519" class="Keyword">infix</a> <a id="1525" class="Number">6</a> <a id="1527" href="MLTT.Syntax.html#1533" class="Function Operator">Tm[_]</a>
-<a id="Tm[_]"></a><a id="1533" href="MLTT.Syntax.html#1533" class="Function Operator">Tm[_]</a> <a id="1539" class="Symbol">:</a> <a id="1541" href="Prelude.Nat.html#392" class="Datatype">ℕ</a> <a id="1543" class="Symbol">→</a> <a id="1545" href="Agda.Primitive.html#388" class="Primitive">Set</a>
+<a id="Tm[_]"></a><a id="1533" href="MLTT.Syntax.html#1533" class="Function Operator">Tm[_]</a> <a id="1539" class="Symbol">:</a> <a id="1541" href="Prelude.Nat.html#395" class="Datatype">ℕ</a> <a id="1543" class="Symbol">→</a> <a id="1545" href="Agda.Primitive.html#388" class="Primitive">Set</a>
 
 <a id="1550" href="MLTT.Syntax.html#1533" class="Function Operator">Tm[</a> <a id="1554" href="MLTT.Syntax.html#1554" class="Bound">n</a> <a id="1556" href="MLTT.Syntax.html#1533" class="Function Operator">]</a> <a id="1558" class="Symbol">=</a> <a id="1560" href="WSLN.Sig.Term.html#392" class="Datatype Operator">Trm[_]</a> <a id="1567" class="Symbol">⦃</a> <a id="1569" href="MLTT.Syntax.html#1291" class="Function">MLTT</a> <a id="1574" class="Symbol">⦄</a> <a id="1576" href="MLTT.Syntax.html#1554" class="Bound">n</a>
 
@@ -74,7 +74,7 @@
 
 <a id="1613" class="Comment">-- Types are particular kinds of term</a>
 <a id="1651" class="Keyword">infix</a> <a id="1657" class="Number">6</a> <a id="1659" href="MLTT.Syntax.html#1665" class="Function Operator">Ty[_]</a>
-<a id="Ty[_]"></a><a id="1665" href="MLTT.Syntax.html#1665" class="Function Operator">Ty[_]</a> <a id="1671" class="Symbol">:</a> <a id="1673" href="Prelude.Nat.html#392" class="Datatype">ℕ</a> <a id="1675" class="Symbol">→</a> <a id="1677" href="Agda.Primitive.html#388" class="Primitive">Set</a>
+<a id="Ty[_]"></a><a id="1665" href="MLTT.Syntax.html#1665" class="Function Operator">Ty[_]</a> <a id="1671" class="Symbol">:</a> <a id="1673" href="Prelude.Nat.html#395" class="Datatype">ℕ</a> <a id="1675" class="Symbol">→</a> <a id="1677" href="Agda.Primitive.html#388" class="Primitive">Set</a>
 
 <a id="1682" href="MLTT.Syntax.html#1665" class="Function Operator">Ty[</a> <a id="1686" href="MLTT.Syntax.html#1686" class="Bound">n</a> <a id="1688" href="MLTT.Syntax.html#1665" class="Function Operator">]</a> <a id="1690" class="Symbol">=</a> <a id="1692" href="MLTT.Syntax.html#1533" class="Function Operator">Tm[</a> <a id="1696" href="MLTT.Syntax.html#1686" class="Bound">n</a> <a id="1698" href="MLTT.Syntax.html#1533" class="Function Operator">]</a>
 

@@ -2,47 +2,31 @@
 <html><head><meta charset="utf-8"><title>Prelude.Empty</title><link rel="stylesheet" href="Agda.css"></head><body><pre class="Agda"><a id="1" class="Keyword">module</a> <a id="8" href="Prelude.Empty.html" class="Module">Prelude.Empty</a> <a id="22" class="Keyword">where</a>
 
 <a id="29" class="Keyword">open</a> <a id="34" class="Keyword">import</a> <a id="41" href="Prelude.Level.html" class="Module">Prelude.Level</a>
-<a id="55" class="Keyword">open</a> <a id="60" class="Keyword">import</a> <a id="67" href="Prelude.Identity.html" class="Module">Prelude.Identity</a>
 
-<a id="85" class="Comment">----------------------------------------------------------------------</a>
-<a id="156" class="Comment">-- Level polymorphic empty type</a>
-<a id="188" class="Comment">----------------------------------------------------------------------</a>
-<a id="259" class="Keyword">data</a> <a id="Ø"></a><a id="264" href="Prelude.Empty.html#264" class="Datatype">Ø</a> <a id="266" class="Symbol">{</a><a id="267" href="Prelude.Empty.html#267" class="Bound">ℓ</a> <a id="269" class="Symbol">:</a> <a id="271" href="Agda.Primitive.html#742" class="Postulate">Level</a><a id="276" class="Symbol">}</a> <a id="278" class="Symbol">:</a> <a id="280" href="Agda.Primitive.html#388" class="Primitive">Set</a> <a id="284" href="Prelude.Empty.html#267" class="Bound">ℓ</a> <a id="286" class="Keyword">where</a>
+<a id="56" class="Comment">----------------------------------------------------------------------</a>
+<a id="127" class="Comment">-- Level polymorphic empty type</a>
+<a id="159" class="Comment">----------------------------------------------------------------------</a>
+<a id="230" class="Keyword">data</a> <a id="Ø"></a><a id="235" href="Prelude.Empty.html#235" class="Datatype">Ø</a> <a id="237" class="Symbol">{</a><a id="238" href="Prelude.Empty.html#238" class="Bound">ℓ</a> <a id="240" class="Symbol">:</a> <a id="242" href="Agda.Primitive.html#742" class="Postulate">Level</a><a id="247" class="Symbol">}</a> <a id="249" class="Symbol">:</a> <a id="251" href="Agda.Primitive.html#388" class="Primitive">Set</a> <a id="255" href="Prelude.Empty.html#238" class="Bound">ℓ</a> <a id="257" class="Keyword">where</a>
 
-<a id="Øelim"></a><a id="293" href="Prelude.Empty.html#293" class="Function">Øelim</a> <a id="299" class="Symbol">:</a>
-  <a id="303" class="Symbol">{</a><a id="304" href="Prelude.Empty.html#304" class="Bound">ℓ</a> <a id="306" href="Prelude.Empty.html#306" class="Bound">ℓ&#39;</a> <a id="309" class="Symbol">:</a> <a id="311" href="Agda.Primitive.html#742" class="Postulate">Level</a><a id="316" class="Symbol">}</a>
-  <a id="320" class="Symbol">{</a><a id="321" href="Prelude.Empty.html#321" class="Bound">A</a> <a id="323" class="Symbol">:</a> <a id="325" href="Agda.Primitive.html#388" class="Primitive">Set</a> <a id="329" href="Prelude.Empty.html#306" class="Bound">ℓ&#39;</a><a id="331" class="Symbol">}</a>
-  <a id="335" class="Symbol">→</a> <a id="337" class="Comment">------------</a>
-  <a id="352" href="Prelude.Empty.html#264" class="Datatype">Ø</a><a id="353" class="Symbol">{</a><a id="354" href="Prelude.Empty.html#304" class="Bound">ℓ</a><a id="355" class="Symbol">}</a> <a id="357" class="Symbol">→</a> <a id="359" href="Prelude.Empty.html#321" class="Bound">A</a>
+<a id="Øelim"></a><a id="264" href="Prelude.Empty.html#264" class="Function">Øelim</a> <a id="270" class="Symbol">:</a>
+  <a id="274" class="Symbol">{</a><a id="275" href="Prelude.Empty.html#275" class="Bound">ℓ</a> <a id="277" href="Prelude.Empty.html#277" class="Bound">ℓ&#39;</a> <a id="280" class="Symbol">:</a> <a id="282" href="Agda.Primitive.html#742" class="Postulate">Level</a><a id="287" class="Symbol">}</a>
+  <a id="291" class="Symbol">{</a><a id="292" href="Prelude.Empty.html#292" class="Bound">A</a> <a id="294" class="Symbol">:</a> <a id="296" href="Agda.Primitive.html#388" class="Primitive">Set</a> <a id="300" href="Prelude.Empty.html#277" class="Bound">ℓ&#39;</a><a id="302" class="Symbol">}</a>
+  <a id="306" class="Symbol">→</a> <a id="308" class="Comment">------------</a>
+  <a id="323" href="Prelude.Empty.html#235" class="Datatype">Ø</a><a id="324" class="Symbol">{</a><a id="325" href="Prelude.Empty.html#275" class="Bound">ℓ</a><a id="326" class="Symbol">}</a> <a id="328" class="Symbol">→</a> <a id="330" href="Prelude.Empty.html#292" class="Bound">A</a>
 
-<a id="362" href="Prelude.Empty.html#293" class="Function">Øelim</a> <a id="368" class="Symbol">()</a>
+<a id="333" href="Prelude.Empty.html#264" class="Function">Øelim</a> <a id="339" class="Symbol">()</a>
 
-<a id="372" class="Comment">-- Falsity</a>
-<a id="⊥"></a><a id="383" href="Prelude.Empty.html#383" class="Function">⊥</a> <a id="385" class="Symbol">:</a> <a id="387" href="Agda.Primitive.html#388" class="Primitive">Set</a>
+<a id="343" class="Comment">-- Falsity</a>
+<a id="⊥"></a><a id="354" href="Prelude.Empty.html#354" class="Function">⊥</a> <a id="356" class="Symbol">:</a> <a id="358" href="Agda.Primitive.html#388" class="Primitive">Set</a>
 
-<a id="392" href="Prelude.Empty.html#383" class="Function">⊥</a> <a id="394" class="Symbol">=</a> <a id="396" href="Prelude.Empty.html#264" class="Datatype">Ø</a> <a id="398" class="Symbol">{</a><a id="399" href="Agda.Primitive.html#915" class="Primitive">ℓ₀</a><a id="401" class="Symbol">}</a>
+<a id="363" href="Prelude.Empty.html#354" class="Function">⊥</a> <a id="365" class="Symbol">=</a> <a id="367" href="Prelude.Empty.html#235" class="Datatype">Ø</a> <a id="369" class="Symbol">{</a><a id="370" href="Agda.Primitive.html#915" class="Primitive">ℓ₀</a><a id="372" class="Symbol">}</a>
 
-<a id="404" class="Symbol">{-#</a> <a id="408" class="Keyword">DISPLAY</a> <a id="416" href="Prelude.Empty.html#264" class="Datatype">Ø</a> <a id="418" class="Pragma">{</a><a id="419" href="Agda.Primitive.html#915" class="Primitive">ℓ₀</a><a id="421" class="Pragma">}</a> <a id="423" class="Pragma">=</a> <a id="425" href="Prelude.Empty.html#383" class="Function">⊥</a> <a id="427" class="Symbol">#-}</a>
+<a id="375" class="Symbol">{-#</a> <a id="379" class="Keyword">DISPLAY</a> <a id="387" href="Prelude.Empty.html#235" class="Datatype">Ø</a> <a id="389" class="Pragma">{</a><a id="390" href="Agda.Primitive.html#915" class="Primitive">ℓ₀</a><a id="392" class="Pragma">}</a> <a id="394" class="Pragma">=</a> <a id="396" href="Prelude.Empty.html#354" class="Function">⊥</a> <a id="398" class="Symbol">#-}</a>
 
-<a id="432" class="Comment">----------------------------------------------------------------------</a>
-<a id="503" class="Comment">-- Negation</a>
-<a id="515" class="Comment">----------------------------------------------------------------------</a>
-<a id="¬"></a><a id="586" href="Prelude.Empty.html#586" class="Function">¬</a> <a id="588" class="Symbol">:</a> <a id="590" class="Symbol">{</a><a id="591" href="Prelude.Empty.html#591" class="Bound">l</a> <a id="593" class="Symbol">:</a> <a id="595" href="Agda.Primitive.html#742" class="Postulate">Level</a><a id="600" class="Symbol">}</a> <a id="602" class="Symbol">→</a> <a id="604" href="Agda.Primitive.html#388" class="Primitive">Set</a> <a id="608" href="Prelude.Empty.html#591" class="Bound">l</a> <a id="610" class="Symbol">→</a> <a id="612" href="Agda.Primitive.html#388" class="Primitive">Set</a> <a id="616" href="Prelude.Empty.html#591" class="Bound">l</a>
+<a id="403" class="Comment">----------------------------------------------------------------------</a>
+<a id="474" class="Comment">-- Negation</a>
+<a id="486" class="Comment">----------------------------------------------------------------------</a>
+<a id="¬"></a><a id="557" href="Prelude.Empty.html#557" class="Function">¬</a> <a id="559" class="Symbol">:</a> <a id="561" class="Symbol">{</a><a id="562" href="Prelude.Empty.html#562" class="Bound">l</a> <a id="564" class="Symbol">:</a> <a id="566" href="Agda.Primitive.html#742" class="Postulate">Level</a><a id="571" class="Symbol">}</a> <a id="573" class="Symbol">→</a> <a id="575" href="Agda.Primitive.html#388" class="Primitive">Set</a> <a id="579" href="Prelude.Empty.html#562" class="Bound">l</a> <a id="581" class="Symbol">→</a> <a id="583" href="Agda.Primitive.html#388" class="Primitive">Set</a> <a id="587" href="Prelude.Empty.html#562" class="Bound">l</a>
 
-<a id="619" href="Prelude.Empty.html#586" class="Function">¬</a> <a id="621" class="Symbol">{</a><a id="622" href="Prelude.Empty.html#622" class="Bound">l</a><a id="623" class="Symbol">}</a> <a id="625" href="Prelude.Empty.html#625" class="Bound">A</a> <a id="627" class="Symbol">=</a> <a id="629" href="Prelude.Empty.html#625" class="Bound">A</a> <a id="631" class="Symbol">→</a> <a id="633" href="Prelude.Empty.html#264" class="Datatype">Ø</a><a id="634" class="Symbol">{</a><a id="635" href="Prelude.Empty.html#622" class="Bound">l</a><a id="636" class="Symbol">}</a>
-
-<a id="639" class="Comment">-- ¬↔ :</a>
-<a id="647" class="Comment">--   {l : Level}</a>
-<a id="664" class="Comment">--   {A B : Set l}</a>
-<a id="683" class="Comment">--   (_ : A ↔ B)</a>
-<a id="700" class="Comment">--   → -----------</a>
-<a id="719" class="Comment">--   ¬ A ↔ ¬ B</a>
-
-<a id="735" class="Comment">-- ((¬↔ e)  $ ¬x) y = ¬x (e °$ y)</a>
-<a id="769" class="Comment">-- ((¬↔ e) °$ ¬y) x = ¬y (e  $ x)</a>
-
-
-
-<a id="806" class="Comment">-- ⊥-elim : ∀ {w} {Whatever : Set w} → .⊥ → Whatever</a>
-<a id="859" class="Comment">-- ⊥-elim ()</a>
+<a id="590" href="Prelude.Empty.html#557" class="Function">¬</a> <a id="592" class="Symbol">{</a><a id="593" href="Prelude.Empty.html#593" class="Bound">l</a><a id="594" class="Symbol">}</a> <a id="596" href="Prelude.Empty.html#596" class="Bound">A</a> <a id="598" class="Symbol">=</a> <a id="600" href="Prelude.Empty.html#596" class="Bound">A</a> <a id="602" class="Symbol">→</a> <a id="604" href="Prelude.Empty.html#235" class="Datatype">Ø</a><a id="605" class="Symbol">{</a><a id="606" href="Prelude.Empty.html#593" class="Bound">l</a><a id="607" class="Symbol">}</a>
 </pre></body></html>
