@@ -1,6 +1,6 @@
 module Prelude.FinInt where
 
-open import Prelude.Decidable
+-- open import Prelude.Decidable
 open import Prelude.Empty
 open import Prelude.Identity
 open import Prelude.Instance
@@ -64,21 +64,6 @@ fin (step m) = step (fin m)
 
 𝓃ᵒfin top      = refl
 𝓃ᵒfin (step m) = 𝓃ᵒfin m
-
-----------------------------------------------------------------------
--- Decidable equality
-----------------------------------------------------------------------
-decInt : ∀{n} → (m m' : [0⋯ n ]) → Dec (m ≡ m')
-decInt top top = equ
-decInt top (step m') = no λ()
-decInt (step m) top = no λ()
-decInt (step m) (step m') with decInt m m'
-... | no ¬p = no λ{refl → ¬p refl}
-... | equ = equ
-
-instance
-  hasDecEqInt : ∀{n} → hasDecEq [0⋯ n ]
-  _≐_ ⦃ hasDecEqInt ⦄ = decInt
 
 ----------------------------------------------------------------------
 -- Trichotomous view of ℕ × ℕ

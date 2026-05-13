@@ -1,9 +1,5 @@
 module Prelude.Fin where
 
-open import Prelude.Decidable
-open import Prelude.Empty
-open import Prelude.Identity
-open import Prelude.Instance
 open import Prelude.Level
 open import Prelude.Nat
 

@@ -1,6 +1,6 @@
 module Prelude.Nat where
 
-open import Prelude.Decidable
+-- open import Prelude.Decidable
 open import Prelude.Empty
 open import Prelude.Identity
 open import Prelude.Instance
@@ -40,21 +40,6 @@ pattern 3+ n = 1+ (1+ (1+ n))
 -- Negated successor congruence
 ≢1+ : ∀{m n} → ¬(1+ m ≡ 1+ n) → ¬(m ≡ n)
 ≢1+ ¬p refl = ¬p refl
-
--- Decidable equality
-decEqℕ : (m n : ℕ) → Dec (m ≡ n)
-
-decEqℕ 0      0      = equ
-decEqℕ 0      (1+ n) = no λ()
-decEqℕ (1+ m) 0      = no λ()
-decEqℕ (1+ m) (1+ n)
-    with decEqℕ m n
-... | no ¬p          = no λ{refl → ¬p refl }
-... | equ            = equ
-
-instance
-  hasDecEqℕ : hasDecEq ℕ
-  _≐_ ⦃ hasDecEqℕ ⦄ = decEqℕ
 
 ----------------------------------------------------------------------
 -- Order
