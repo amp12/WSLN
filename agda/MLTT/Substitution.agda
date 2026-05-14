@@ -41,9 +41,9 @@ open import MLTT.Weakening
   → ----------------------------
   (Γ' ⨟ x ∶ A ⦂ l)⊢ˢ σ ＝ σ' ∶ Γ
 
-▷＝Sb x q (◇ q') q'' = ◇ (ok⨟ q q'' q')
-▷＝Sb x q ([] q₀ q₁ q₂ q₃) q' =
-  [] (▷＝Sb x q q₀ q') q₁ (▷Jg (proj q q') q₂)  q₃
+▷＝Sb x q (＝◇ˢ q') q'' = ＝◇ˢ (ok⨟ q q'' q')
+▷＝Sb x q (＝⨟ˢ q₀ q₁ q₂ q₃) q' =
+  ＝⨟ˢ (▷＝Sb x q q₀ q') q₁ (▷Jg (proj q q') q₂)  q₃
 
 ----------------------------------------------------------------------
 -- Identity substitution is well-typed
