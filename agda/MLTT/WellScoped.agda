@@ -28,8 +28,8 @@ Oksupp :
   → ----------------------
   supp A ⊆ dom Γ
 
-Oksupp ([] p _ _)  isInNew     = ∈∪₁ ∘ ⊢supp p ∘ ∈∪₁
-Oksupp ([] ⊢A _ p) (isInOld q) = ∈∪₁ ∘ Oksupp p q
+Oksupp (ok⨟ p _ _)  isInNew     = ∈∪₁ ∘ ⊢supp p ∘ ∈∪₁
+Oksupp (ok⨟ ⊢A _ p) (isInOld q) = ∈∪₁ ∘ Oksupp p q
 
 ⊢supp¹ :
   {Γ : Cx}
@@ -489,5 +489,5 @@ dom＝ :
   → -------------
   dom Γ ⊆ dom Γ'
 
-dom＝ ([] q _ _ _ _) (∈∪₁ x∈Γ) = ∈∪₁ (dom＝ q x∈Γ)
-dom＝ ([] _ _ _ _ _) (∈∪₂ ∈｛｝) = ∈∪₂ ∈｛｝
+dom＝ (＝⨟ q _ _ _ _) (∈∪₁ x∈Γ) = ∈∪₁ (dom＝ q x∈Γ)
+dom＝ (＝⨟ _ _ _ _ _) (∈∪₂ ∈｛｝) = ∈∪₂ ∈｛｝

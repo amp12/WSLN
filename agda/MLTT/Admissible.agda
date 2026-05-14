@@ -22,8 +22,8 @@ CxRefl :
   → --------
   ⊢ Γ ＝ Γ
 
-CxRefl ◇ = ◇
-CxRefl ([] q q' q'') = [] (CxRefl q'') (Refl q) (q' ∉∪ q') q q
+CxRefl ok◇ = ＝◇
+CxRefl (ok⨟ q q' q'') = ＝⨟ (CxRefl q'') (Refl q) (q' ∉∪ q') q q
 
 -- Symmetry and transitivity for context conversion are proved below
 
@@ -36,13 +36,13 @@ CxRefl ([] q q' q'') = [] (CxRefl q'') (Refl q) (q' ∉∪ q') q q
   → -------------
   Γ' ⊢ˢ  idˢ ∶ Γ
 
-＝⊢idˢ ◇ = ◇ ◇
-＝⊢idˢ ([]{l}{Γ}{A = A}{A'}{x} q₀ q₁ (q₂ ∉∪ q₂') h₀ h₁) = []
+＝⊢idˢ ＝◇ = ◇ˢ ok◇
+＝⊢idˢ (＝⨟{l}{Γ}{A = A}{A'}{x} q₀ q₁ (q₂ ∉∪ q₂') h₀ h₁) = ⨟ˢ
   (▷Sb x h₀ (＝⊢idˢ q₀) q₂)
   h₁
   (subst (λ B → (Γ ⨟ x ∶ A ⦂ l) ⊢ 𝐯 x ∶ B ⦂ l)
     (symm (sbUnit A'))
-    (⊢conv (⊢𝐯 ([]⁻ h₀ q₂) isInNew) (▷Jg (proj h₀ q₂) q₁)))
+    (⊢conv (⊢𝐯 (ok⨟⁻ h₀ q₂) isInNew) (▷Jg (proj h₀ q₂) q₁)))
   q₂'
 
 ＝⊢ :
@@ -69,8 +69,8 @@ CxRefl ([] q q' q'') = [] (CxRefl q'') (Refl q) (q' ∉∪ q') q q
   → ---------------------
   Γ ⨟ x ∶ A' ⦂ l ⊢ J
 
-⨟＝⊢ q q' h with [] ⊢A x#Γ okΓ ← ⊢ok q' =
-  ＝⊢ q' ([] (CxRefl okΓ) q (x#Γ ∉∪ x#Γ) h ⊢A)
+⨟＝⊢ q q' h with ok⨟ ⊢A x#Γ okΓ ← ⊢ok q' =
+  ＝⊢ q' (＝⨟ (CxRefl okΓ) q (x#Γ ∉∪ x#Γ) h ⊢A)
 
 ----------------------------------------------------------------------
 -- Substitution properties of concretion
@@ -91,7 +91,7 @@ concTm :
   Γ ⊢ b [ a ] ∶ B [ a ] ⦂ l'
 
 concTm{l' = l'}{Γ}{a = a} B b x p q (x#B ∉∪ x#b)
-  with [] q' q'' _ ← ⊢ok p =
+  with ok⨟ q' q'' _ ← ⊢ok p =
   subst₂ (λ z Z → Γ ⊢ z ∶ Z ⦂ l')
     (ssb[] x a b x#b)
     (ssb[] x a B x#B)
@@ -135,7 +135,7 @@ conc＝Ty :
   Γ ⊢ B [ a ] ＝ B' [ a' ] ⦂ l'
 
 conc＝Ty{l' = l'}{Γ}{A}{a}{a'} B B' x q₀ q₁ (q₂ ∉∪ q₂') h₀ h₁ h₂
-  with [] p p' _ ← ⊢ok q₀ = Trans q q'
+  with ok⨟ p p' _ ← ⊢ok q₀ = Trans q q'
   where
   q : Γ ⊢ B [ a ] ＝ B [ a' ] ⦂ l'
   q = subst₂ (λ Z Z' → Γ ⊢ Z ＝ Z' ⦂ l')
@@ -199,7 +199,7 @@ conc＝Ty² :
 
 conc＝Ty²{l'' = l''}{Γ}{A}{B}{a}{a'}{b}{b'}
   C C' x y q₀ q₁ q₂ q₃ (q₄ ∉∪ q₄') (q₅ ∉∪ q₅') h₀ h₁ h₂ h₃ h₄ h₅
-  with  [] ⊢B y#Γx _ ← ⊢ok q₀ = Trans q q'
+  with  ok⨟ ⊢B y#Γx _ ← ⊢ok q₀ = Trans q q'
   where
   q : Γ ⊢ C [ a ][ b ] ＝ C [ a' ][ b' ] ⦂ l''
   q = subst₂ (λ Z Z' → Γ ⊢ Z ＝ Z' ⦂ l'')
@@ -626,8 +626,8 @@ implies Γ ⊢ a ∶ A. We do this by simultaneously proving that
   → ---------------------
   Γ ⊢ˢ σ ∶ Γ'
 
-⊢sb₁ (◇ q) = ◇ q
-⊢sb₁ ([] q₀ q₁ q₂ q₃) = [] (⊢sb₁ q₀) q₁ (⊢ty₁ q₂) q₃
+⊢sb₁ (◇ q) = ◇ˢ q
+⊢sb₁ ([] q₀ q₁ q₂ q₃) = ⨟ˢ (⊢sb₁ q₀) q₁ (⊢ty₁ q₂) q₃
 
 ⊢sb₂ :
   {Γ Γ' : Cx}
@@ -636,8 +636,8 @@ implies Γ ⊢ a ∶ A. We do this by simultaneously proving that
   → ---------------------
   Γ ⊢ˢ σ' ∶ Γ'
 
-⊢sb₂ (◇ q) = ◇ q
-⊢sb₂ ([] q₀ q₁ q₂ q₃) = []
+⊢sb₂ (◇ q) = ◇ˢ q
+⊢sb₂ ([] q₀ q₁ q₂ q₃) = ⨟ˢ
   (⊢sb₂ q₀)
   q₁
   (⊢conv (⊢ty₂ q₂) (＝sbTm q₀ q₁ (⊢sb₁ q₀)))
@@ -711,7 +711,7 @@ concTy² :
   Γ ⊢ C [ a ][ b ] ⦂ l''
 
 concTy²{l'' = l''}{Γ}{a = a}{b} C x y q₀ q₁ q₂ q₃ q₄
-  with [] ⊢B y#Γx _ ← ⊢ok q₀ =
+  with ok⨟ ⊢B y#Γx _ ← ⊢ok q₀ =
   subst (λ Z → Γ ⊢ Z ⦂ l'')
     (ssb[]² x y a b C q₃ (q₄ ∉∪ (∉∪₂ y#Γx)))
     (sbJg (ssbUpdate² q₁ ⊢B q₂ y#Γx) q₀)
@@ -729,8 +729,8 @@ ok→ty :
   → ----------------------
   Γ ⊢ A ⦂ l
 
-ok→ty ([] q₀ q₁ _)   isInNew     = ▷Jg (proj q₀ q₁) q₀
-ok→ty ([] q₀ q₁ q₃) (isInOld q₂) = ▷Jg (proj q₀ q₁) (ok→ty q₃ q₂)
+ok→ty (ok⨟ q₀ q₁ _)   isInNew     = ▷Jg (proj q₀ q₁) q₀
+ok→ty (ok⨟ q₀ q₁ q₃) (isInOld q₂) = ▷Jg (proj q₀ q₁) (ok→ty q₃ q₂)
 
 ----------------------------------------------------------------------
 -- Well-typed terms have well-formed types
@@ -796,8 +796,8 @@ CxSymm :
   → -------------
   ⊢ Γ' ＝ Γ
 
-CxSymm ◇ = ◇
-CxSymm ([] q₀ q₁ (q₂ ∉∪ q₂') h₀ h₁) = []
+CxSymm ＝◇ = ＝◇
+CxSymm (＝⨟ q₀ q₁ (q₂ ∉∪ q₂') h₀ h₁) = ＝⨟
   (CxSymm q₀)
   (＝⊢ (Symm q₁) (CxSymm q₀))
   (q₂' ∉∪ q₂)
@@ -811,8 +811,8 @@ CxTrans :
   → ---------------
   ⊢ Γ ＝ Γ''
 
-CxTrans ◇ ◇ = ◇
-CxTrans ([] q₀ q₁ (q₂ ∉∪ _) h₀ _) ([] q₀' q₁' (_ ∉∪ q₂') _ h₁') = []
+CxTrans ＝◇ ＝◇ = ＝◇
+CxTrans (＝⨟ q₀ q₁ (q₂ ∉∪ _) h₀ _) (＝⨟ q₀' q₁' (_ ∉∪ q₂') _ h₁') = ＝⨟
   (CxTrans q₀ q₀')
   (Trans q₁ (＝⊢ q₁' q₀))
   (q₂ ∉∪ q₂')

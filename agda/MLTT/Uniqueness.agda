@@ -29,11 +29,11 @@ svVr :
  (l ≡ l') ∧ (A ≡ A')
 
 svVr _ isInNew isInNew _ = refl , refl
-svVr ([] _ q _) isInNew (isInOld p') refl =
+svVr (ok⨟ _ q _) isInNew (isInOld p') refl =
   Øelim (∉→¬∈ q (isIn→dom p'))
-svVr ([] _ q _) (isInOld p) isInNew refl =
+svVr (ok⨟ _ q _) (isInOld p) isInNew refl =
   Øelim (∉→¬∈ q (isIn→dom p))
-svVr ([] _ _ q) (isInOld p) (isInOld p') e = svVr q p p' e
+svVr (ok⨟ _ _ q) (isInOld p) (isInOld p') e = svVr q p p' e
 
 svTy :
   {l l' : Lvl}

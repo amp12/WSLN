@@ -47,7 +47,7 @@ open import MLTT.Admissible
   Γ ⊢ 𝛌 A b ∶ 𝚷 l l' A B ⦂ max l l'
 
 ⊢𝛌⁻{l}{l'}{Γ}{A}{B}{b}{x} q (x#B ∉∪ x#b)
-  with [] q' x#Γ okΓ ← ⊢ok q = ⊢𝛌
+  with ok⨟ q' x#Γ okΓ ← ⊢ok q = ⊢𝛌
   (supp Γ)
   (λ y y#Γ → subst₂ (λ b' B' → (Γ ⨟ y ∶ A ⦂ l) ⊢ b' ∶ B' ⦂ l')
     (ssb[] x (𝐯 y) b x#b)
@@ -122,7 +122,7 @@ open import MLTT.Admissible
   Γ ⊢ 𝐉 C a b c e ∶ C [ b ][ e ] ⦂ l'
 
 ⊢𝐉⁻{l}{l'}{Γ}{A}{C}{a}{b}{c}{e}{x}{y} q₀ q₁ q₂ q₃ q₄ x#C y#C
-  with [] q (y#Γ ∉∪ y#x) ([] q' x#Γ okΓ) ← ⊢ok q₀ = ⊢𝐉
+  with ok⨟ q (y#Γ ∉∪ y#x) (ok⨟ q' x#Γ okΓ) ← ⊢ok q₀ = ⊢𝐉
   (supp Γ)
   (λ{x' y' (##:: y'#Γ (##:: (x'#y' ∉∪ x'#Γ) ##◇)) →
     subst₂ (λ I C' →
@@ -166,7 +166,7 @@ open import MLTT.Admissible
   Γ ⊢ 𝐧𝐫𝐞𝐜 C c₀ c₊ a ∶ C [ a ] ⦂ l
 
 ⊢𝐧𝐫𝐞𝐜⁻{l}{Γ}{C}{c₀}{a}{c₊}{x}{y} q₀ q₁ q₂ (x#C ∉∪ x#c₊) y#c₊
-  with [] q (y#Γ ∉∪ y#x) ([] q' x#Γ okΓ) ← ⊢ok q₁ = ⊢𝐧𝐫𝐞𝐜
+  with ok⨟ q (y#Γ ∉∪ y#x) (ok⨟ q' x#Γ okΓ) ← ⊢ok q₁ = ⊢𝐧𝐫𝐞𝐜
   (supp Γ)
   q₀
   (λ{x' y' (##:: y'#Γ (##:: (x'#y' ∉∪ x'#Γ) ##◇)) →
@@ -317,7 +317,7 @@ open import MLTT.Admissible
 
 𝐉Cong⁻{l}{l'}{Γ}{A}{C}{C'}{a}{a'}{b}{b'}{c}{c'}{e}{e'}{x}{y}
   q₀ q₁ q₂ q₃ q₄ (x#C ∉∪ x#C') (y#C ∉∪ y#C')
-  with [] q (y#Γ ∉∪ y#x) ([] q' x#Γ okΓ) ← ⊢ok q₀ = 𝐉Cong
+  with ok⨟ q (y#Γ ∉∪ y#x) (ok⨟ q' x#Γ okΓ) ← ⊢ok q₀ = 𝐉Cong
   (supp Γ)
   (λ{x' y' (##:: y'#Γ (##:: (x'#y' ∉∪ x'#Γ) ##◇)) →
     subst₃ (λ I D D' →
@@ -364,7 +364,7 @@ open import MLTT.Admissible
 
 𝐧𝐫𝐞𝐜Cong⁻{l}{Γ}{C}{C'}{c₀}{c₀'}{a}{a'}{c₊}{c₊'}{x}{y}
   q₀ q₁ q₂ q₃ (x#C ∉∪ x#C' ∉∪ x#c₊ ∉∪ x#c₊') (y#c₊ ∉∪ y#c₊')
-  with [] q (y#Γ ∉∪ y#x) ([] q' x#Γ okΓ) ← ⊢ok q₂ = 𝐧𝐫𝐞𝐜Cong
+  with ok⨟ q (y#Γ ∉∪ y#x) (ok⨟ q' x#Γ okΓ) ← ⊢ok q₂ = 𝐧𝐫𝐞𝐜Cong
   (supp Γ)
   (λ x' x'#Γ → subst₂ (λ D D' →
     (Γ ⨟ x' ∶ 𝐍𝐚𝐭 ⦂ 0) ⊢ D ＝ D' ⦂ l)
@@ -452,7 +452,7 @@ open import MLTT.Admissible
   Γ ⊢ 𝐉 C a a c (𝐫𝐞𝐟𝐥 a) ＝ c ∶ C [ a ][ 𝐫𝐞𝐟𝐥 a ] ⦂ l'
 
 𝐈𝐝Beta⁻{l}{l'}{Γ}{A}{C}{a}{c}{x}{y} q₀ q₁ q₂ x#C y#C
-  with [] q (y#Γ ∉∪ y#x) ([] q' x#Γ okΓ) ← ⊢ok q₀ = 𝐈𝐝Beta
+  with ok⨟ q (y#Γ ∉∪ y#x) (ok⨟ q' x#Γ okΓ) ← ⊢ok q₀ = 𝐈𝐝Beta
   (supp Γ)
   (λ{x' y' (##:: y'#Γ (##:: (x'#y' ∉∪ x'#Γ) ##◇)) →
     subst₂ (λ I C' →
@@ -493,7 +493,7 @@ open import MLTT.Admissible
   Γ ⊢ 𝐧𝐫𝐞𝐜 C c₀ c₊ 𝐳𝐞𝐫𝐨 ＝ c₀ ∶ C [ 𝐳𝐞𝐫𝐨 ] ⦂ l
 
 𝐍𝐚𝐭Beta₀⁻{l}{Γ}{C}{c₀}{c₊}{x}{y} q₀ q₁ (x#C ∉∪ x#c₊) y#c₊
-  with [] q (y#Γ ∉∪ y#x) ([] q' x#Γ okΓ) ← ⊢ok q₁ = 𝐍𝐚𝐭Beta₀
+  with ok⨟ q (y#Γ ∉∪ y#x) (ok⨟ q' x#Γ okΓ) ← ⊢ok q₁ = 𝐍𝐚𝐭Beta₀
   (supp Γ)
   q₀
   (λ{x' y' (##:: y'#Γ (##:: (x'#y' ∉∪ x'#Γ) ##◇)) →
@@ -547,7 +547,7 @@ open import MLTT.Admissible
   c₊ [ a ][ 𝐧𝐫𝐞𝐜 C c₀ c₊ a ] ∶ C [ 𝐬𝐮𝐜𝐜 a ] ⦂ l
 
 𝐍𝐚𝐭Beta₊⁻{l}{Γ}{C}{c₀}{a}{c₊}{x}{y} q₀ q₁ q₂ (x#C ∉∪ x#c₊) y#c₊
-  with [] q (y#Γ ∉∪ y#x) ([] q' x#Γ okΓ) ← ⊢ok q₁ = 𝐍𝐚𝐭Beta₊
+  with ok⨟ q (y#Γ ∉∪ y#x) (ok⨟ q' x#Γ okΓ) ← ⊢ok q₁ = 𝐍𝐚𝐭Beta₊
   (supp Γ)
   q₀
   (λ{x' y' (##:: y'#Γ (##:: (x'#y' ∉∪ x'#Γ) ##◇)) →
@@ -636,7 +636,7 @@ open import MLTT.Admissible
   r : (Γ ⨟ x ∶ A ⦂ l) ⊢ b ∙[ A , B ] 𝐯 x ∶ B [ x ] ⦂ l'
   r = ⊢∙⁻ {x = x'}
     (▷Jg (proj ⊢A x#Γ) q)
-    (⊢𝐯 ([] ⊢A x#Γ (⊢ok q)) isInNew)
+    (⊢𝐯 (ok⨟ ⊢A x#Γ (⊢ok q)) isInNew)
     (▷Jg
           (▷⨟ (proj ⊢A x#Γ) ⊢A (x'#Γ ∉∪ x'#x) (▷Jg (proj ⊢A x#Γ) ⊢A))
           ⊢Bx')
@@ -663,7 +663,7 @@ open import MLTT.Admissible
         (▷Jg
           (▷⨟ (proj ⊢A y#Γ) ⊢A (x#Γ ∉∪ #symm y#x) (▷Jg (proj ⊢A y#Γ) ⊢A))
           r))
-      (⊢𝐯 ([] ⊢A y#Γ (⊢ok q)) isInNew)
+      (⊢𝐯 (ok⨟ ⊢A y#Γ (⊢ok q)) isInNew)
       (x#B ∉∪ (#abs x (b ∙[ A , B ] 𝐯 x))))
     where
     eq : (x ． (b ∙[ A , B ] 𝐯 x)) [ y ] ≡ b ∙[ A , B ] 𝐯 y
@@ -673,7 +673,7 @@ open import MLTT.Admissible
        | ssbFresh x (𝐯 y) B x#B
        | updateEq{σ = id}{𝐯 y} x = refl
 
-Cx[]⁻ :
+＝⨟⁻ :
   {l : Lvl}
   {Γ Γ' : Cx}
   {A A' : Ty}
@@ -684,4 +684,4 @@ Cx[]⁻ :
   → ------------------------------------
   ⊢ (Γ ⨟ x ∶ A ⦂ l) ＝ (Γ' ⨟ x ∶ A' ⦂ l)
 
-Cx[]⁻ q₀ q₁ q₂ = [] q₀ q₁ q₂ (⊢ty₁ q₁) (＝⊢ (⊢ty₂ q₁) (CxSymm q₀))
+＝⨟⁻ q₀ q₁ q₂ = ＝⨟ q₀ q₁ q₂ (⊢ty₁ q₁) (＝⊢ (⊢ty₂ q₁) (CxSymm q₀))

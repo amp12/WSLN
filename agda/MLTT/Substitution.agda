@@ -25,9 +25,9 @@ open import MLTT.Weakening
   → -----------------------
   (Γ' ⨟ x ∶ A ⦂ l)⊢ˢ σ ∶ Γ
 
-▷Sb x q (◇ q') q'' = ◇ ([] q q'' q')
-▷Sb x q ([] q₀ q₁ q₂ q₃) q' =
-  [] (▷Sb x q q₀ q') q₁ (▷Jg (proj q q') q₂)  q₃
+▷Sb x q (◇ˢ q') q'' = ◇ˢ (ok⨟ q q'' q')
+▷Sb x q (⨟ˢ q₀ q₁ q₂ q₃) q' =
+  ⨟ˢ (▷Sb x q q₀ q') q₁ (▷Jg (proj q q') q₂)  q₃
 
 ▷＝Sb :
   {l : Lvl}
@@ -41,7 +41,7 @@ open import MLTT.Weakening
   → ----------------------------
   (Γ' ⨟ x ∶ A ⦂ l)⊢ˢ σ ＝ σ' ∶ Γ
 
-▷＝Sb x q (◇ q') q'' = ◇ ([] q q'' q')
+▷＝Sb x q (◇ q') q'' = ◇ (ok⨟ q q'' q')
 ▷＝Sb x q ([] q₀ q₁ q₂ q₃) q' =
   [] (▷＝Sb x q q₀ q') q₁ (▷Jg (proj q q') q₂)  q₃
 
@@ -54,11 +54,11 @@ open import MLTT.Weakening
   → ---------
   Γ ⊢ˢ idˢ ∶ Γ
 
-⊢idˢ ◇ = ◇ ◇
-⊢idˢ ([]{l}{Γ}{A}{x} q q' q'') = []
+⊢idˢ ok◇ = ◇ˢ ok◇
+⊢idˢ (ok⨟{l}{Γ}{A}{x} q q' q'') = ⨟ˢ
   (▷Sb _ q (⊢idˢ q'') q')
   q
-  (⊢𝐯 ([]⁻ q q') (subst (λ A' → (x , A' , l) isIn (Γ ⨟ x ∶ A ⦂ l))
+  (⊢𝐯 (ok⨟⁻ q q') (subst (λ A' → (x , A' , l) isIn (Γ ⨟ x ∶ A ⦂ l))
     (symm (sbUnit A))
     isInNew))
   q'
@@ -74,10 +74,10 @@ sbExt :
   → --------------------------------
   Γ' ⊢ˢ σ' ∶ Γ
 
-sbExt (◇ q) _ = ◇ q
-sbExt{σ}{σ'} ([]{A = A}{x} q₀ q₁ q₂ q₃) e
+sbExt (◇ˢ q) _ = ◇ˢ q
+sbExt{σ}{σ'} (⨟ˢ{A = A}{x} q₀ q₁ q₂ q₃) e
   rewrite sbRespSupp σ σ' A (λ x' p' → e x' (∈∪₁ (⊢supp q₁ (∈∪₁ p'))))
-  | e x (∈∪₂ ∈｛｝) = [] (sbExt q₀ (λ y r → e y (∈∪₁ r))) q₁ q₂ q₃
+  | e x (∈∪₂ ∈｛｝) = ⨟ˢ (sbExt q₀ (λ y r → e y (∈∪₁ r))) q₁ q₂ q₃
 
 sb＝Ext :
   {σ' τ' σ τ : Sb}
@@ -117,7 +117,7 @@ liftSb :
   (Γ' ⨟ x' ∶ σ * A ⦂ l)⊢ˢ (σ ∘/ x := 𝐯 x') ∶ (Γ ⨟ x ∶ A ⦂ l)
 
 liftSb{l}{σ}{Γ}{Γ'}{A}{x}{x'} ⊢σ ⊢A x#Γ x'#Γ' ⊢σA =
-  [] (▷Sb x' ⊢σA ⊢σ' x'#Γ') ⊢A ⊢A' x#Γ
+  ⨟ˢ (▷Sb x' ⊢σA ⊢σ' x'#Γ') ⊢A ⊢A' x#Γ
   where
   ⊢σ' : Γ' ⊢ˢ (σ ∘/ x := 𝐯 x') ∶ Γ
   ⊢σ' = sbExt ⊢σ (λ y r →
@@ -126,7 +126,7 @@ liftSb{l}{σ}{Γ}{Γ'}{A}{x}{x'} ⊢σ ⊢A x#Γ x'#Γ' ⊢σA =
   ⊢A' : (Γ' ⨟ x' ∶ σ * A ⦂ l)⊢
     (σ ∘/ x := 𝐯 x') x ∶ (σ ∘/ x := 𝐯 x') * A ⦂ l
   ⊢A' rewrite updateFresh σ x (𝐯 x') A (∉∪₁ (⊢# ⊢A x#Γ))
-      | :=Eq{f = σ}{𝐯 x'} x = ⊢𝐯 ([]⁻ ⊢σA x'#Γ') isInNew
+      | :=Eq{f = σ}{𝐯 x'} x = ⊢𝐯 (ok⨟⁻ ⊢σA x'#Γ') isInNew
 
 -- Iterated lifting
 liftSb² :
@@ -167,8 +167,8 @@ sbVar :
   → ----------------------
   Γ' ⊢ σ x ∶ σ * A ⦂ l
 
-sbVar ([] _ _ q _)  isInNew     = q
-sbVar ([] q _ _ _) (isInOld q') = sbVar q q'
+sbVar (⨟ˢ _ _ q _)  isInNew     = q
+sbVar (⨟ˢ q _ _ _) (isInOld q') = sbVar q q'
 
 sbVar＝ :
   {l : Lvl}
@@ -751,8 +751,8 @@ sb＝Refl :
   → ---------------
   Γ' ⊢ˢ σ ＝ σ ∶ Γ
 
-sb＝Refl (◇ q) = ◇ q
-sb＝Refl ([] q₀ q₁ q₂ q₃) = [] (sb＝Refl q₀) q₁ (Refl q₂) q₃
+sb＝Refl (◇ˢ q) = ◇ q
+sb＝Refl (⨟ˢ q₀ q₁ q₂ q₃) = [] (sb＝Refl q₀) q₁ (Refl q₂) q₃
 
 ----------------------------------------------------------------------
 -- Properties of substitution update
@@ -772,7 +772,7 @@ sbUpdate :
   → -----------------------------------
   Γ' ⊢ˢ (σ ∘/ x := a) ∶ (Γ ⨟ x ∶ A ⦂ l)
 
-sbUpdate{l}{Γ' = Γ'}{σ}{A}{a}{x} ⊢σ ⊢a x#Γ ⊢A = []
+sbUpdate{l}{Γ' = Γ'}{σ}{A}{a}{x} ⊢σ ⊢a x#Γ ⊢A = ⨟ˢ
   (sbExt ⊢σ (λ y r →
     symm (:=Neq {f = σ} x y λ{refl → ∉→¬∈ x#Γ r })))
   ⊢A
@@ -863,7 +863,7 @@ ssbUpdate² :
   Γ ⊢ˢ (x := a ∘/ y := b) ∶ (Γ ⨟ x ∶ A ⦂ l ⨟ y ∶ B ⦂ l')
 
 ssbUpdate² q₀ q₁ q₂ q₃
-  with [] q q' _ ← ⊢ok q₁ =
+  with ok⨟ q q' _ ← ⊢ok q₁ =
   sbUpdate (ssbUpdate q₀ q' q) q₂ q₃ q₁
 
 ssb＝Update² :
@@ -881,7 +881,7 @@ ssb＝Update² :
     ∶ (Γ ⨟ x ∶ A ⦂ l ⨟ y ∶ B ⦂ l')
 
 ssb＝Update² q₀ q₁ q₂ q₃
-  with [] q q' _ ← ⊢ok q₁ =
+  with ok⨟ q q' _ ← ⊢ok q₁ =
   sb＝Update (ssb＝Update q₀ q' q) q₂ q₃ q₁
 
 ----------------------------------------------------------------------
@@ -931,7 +931,7 @@ lift＝Sb{l}{σ}{σ'}{Γ}{Γ'}{A}{x}{x'} p q x#Γ x'#Γ h =
   q'' rewrite updateFresh σ x (𝐯 x') A (∉∪₁ (⊢# q x#Γ))
       | :=Eq{f = σ}{𝐯 x'} x
       | :=Eq{f = σ'}{𝐯 x'} x =
-    Refl (⊢𝐯 ([]⁻ (sbJg h q) x'#Γ) isInNew)
+    Refl (⊢𝐯 (ok⨟⁻ (sbJg h q) x'#Γ) isInNew)
 
 lift＝Sb² :
   {l l' : Lvl}
@@ -956,7 +956,7 @@ lift＝Sb² :
   ((σ' ∘/ x := 𝐯 x') ∘/ y := 𝐯 y') ∶ (Γ ⨟ x ∶ A ⦂ l  ⨟ y ∶ B ⦂ l')
 
 lift＝Sb² q₀ q₁ q₂ q₃ q₄ q₅ refl refl h
-  with [] q q' _ ← ⊢ok q₂ =
+  with ok⨟ q q' _ ← ⊢ok q₂ =
   lift＝Sb (lift＝Sb q₀ q q' q₃ h) q₂ q₄ q₅
     (liftSb⁻ h q q' q₃)
 
@@ -1183,7 +1183,7 @@ rn⨟ :
   Γ ⨟ x' ∶ A ⦂ l ⊢ (x := 𝐯 x') * J
 
 rn⨟{Γ}{x}{x'}{A}{l} q x'#Γ
-  with [] q' x#Γ okΓ ← ⊢ok q = sbJg
+  with ok⨟ q' x#Γ okΓ ← ⊢ok q = sbJg
     (subst (λ A' →
       (Γ ⨟ x' ∶ A' ⦂ l) ⊢ˢ (x := 𝐯 x') ∶ (Γ ⨟ x ∶ A ⦂ l))
       (sbUnit A)
@@ -1204,7 +1204,7 @@ rn⨟² :
     (x := 𝐯 x' ∘/ y := 𝐯 y') * J
 
 rn⨟²{Γ}{x}{x'}{y}{y'}{A}{B}{l}{l'} q x'#Γ (y'#x' ∉∪ y'#Γ)
-  with [] q' (y#Γ ∉∪ y#x) ([] q'' x#Γ okΓ) ← ⊢ok q =
+  with ok⨟ q' (y#Γ ∉∪ y#x) (ok⨟ q'' x#Γ okΓ) ← ⊢ok q =
   sbJg p' q
   where
   p : Γ ⨟ x' ∶ A ⦂ l ⊢ˢ x := 𝐯 x' ∶ Γ ⨟ x ∶ A ⦂ l

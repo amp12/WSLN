@@ -54,8 +54,8 @@ ok＝ :
   → -------------
   Ok Γ
 
-ok＝ ◇ = ◇
-ok＝ ([] q _ (q' ∉∪ _) h _) = [] h q' (ok＝ q)
+ok＝ ＝◇ = ok◇
+ok＝ (＝⨟ q _ (q' ∉∪ _) h _) = ok⨟ h q' (ok＝ q)
 
 ＝ok :
   {Γ Γ' : Cx}
@@ -63,8 +63,8 @@ ok＝ ([] q _ (q' ∉∪ _) h _) = [] h q' (ok＝ q)
   → -------------
   Ok Γ'
 
-＝ok ◇ = ◇
-＝ok ([] q _ (_ ∉∪ q') _ h) = [] h q' (＝ok q)
+＝ok ＝◇ = ok◇
+＝ok (＝⨟ q _ (_ ∉∪ q') _ h) = ok⨟ h q' (＝ok q)
 
 dom▷ :
   {Δ Γ : Cx}
@@ -82,9 +82,9 @@ dom▷ (▷⨟ q _ _ _)  = ⊆ub (∈∪₁ ∘ dom▷ q) ∈∪₂
   → ---------
   Ok Γ
 
-▷Ok ▷◇              = ◇
+▷Ok ▷◇              = ok◇
 ▷Ok (▷proj q _ _)   = ▷Ok q
-▷Ok (▷⨟ q₀ q₁ q₂ _) = [] q₁ (⊆∉ (dom▷ q₀) q₂) (▷Ok q₀)
+▷Ok (▷⨟ q₀ q₁ q₂ _) = ok⨟ q₁ (⊆∉ (dom▷ q₀) q₂) (▷Ok q₀)
 
 Ok▷ :
   {Δ Γ : Cx}
@@ -92,9 +92,9 @@ Ok▷ :
   → ---------
   Ok Δ
 
-Ok▷ ▷◇               = ◇
-Ok▷ (▷proj q₀ q₁ q₂) = [] q₁ q₂ (Ok▷ q₀)
-Ok▷ (▷⨟ q₀ _ q₂ h)   = [] h q₂ (Ok▷ q₀)
+Ok▷ ▷◇               = ok◇
+Ok▷ (▷proj q₀ q₁ q₂) = ok⨟ q₁ q₂ (Ok▷ q₀)
+Ok▷ (▷⨟ q₀ _ q₂ h)   = ok⨟ h q₂ (Ok▷ q₀)
 
 sbOk :
   {Γ' Γ : Cx}
@@ -103,8 +103,8 @@ sbOk :
   → ---------------
   Ok Γ
 
-sbOk (◇ _) = ◇
-sbOk ([] q q' _ q'') = [] q' q'' (sbOk q)
+sbOk (◇ˢ _) = ok◇
+sbOk (⨟ˢ q q' _ q'') = ok⨟ q' q'' (sbOk q)
 
 okSb :
   {Γ' Γ : Cx}
@@ -113,8 +113,8 @@ okSb :
   → ---------------
   Ok Γ'
 
-okSb (◇ q) = q
-okSb ([] q _ _ _) = okSb q
+okSb (◇ˢ q) = q
+okSb (⨟ˢ q _ _ _) = okSb q
 
 sb＝Ok :
   {Γ' Γ : Cx}
@@ -123,8 +123,8 @@ sb＝Ok :
   → --------------------
   Ok Γ
 
-sb＝Ok (◇ _) = ◇
-sb＝Ok ([] q q' _ q'') = [] q' q'' (sb＝Ok q)
+sb＝Ok (＝◇ˢ _) = ok◇
+sb＝Ok (＝⨟ˢ q q' _ q'') = ok⨟ q' q'' (sb＝Ok q)
 
 okSb＝ :
   {Γ' Γ : Cx}
@@ -133,8 +133,8 @@ okSb＝ :
   → ---------------------
   Ok Γ'
 
-okSb＝ (◇ q) = q
-okSb＝ ([] q _ _ _) = okSb＝ q
+okSb＝ (＝◇ˢ q) = q
+okSb＝ (＝⨟ˢ q _ _ _) = okSb＝ q
 
 ----------------------------------------------------------------------
 -- Context inversion
@@ -148,12 +148,12 @@ okSb＝ ([] q _ _ _) = okSb＝ q
   → --------------------------
   (x # Γ) ∧ (Γ ⊢ A ⦂ l) ∧ Ok Γ
 
-[]⁻¹ ([] q₀ q₁ h) = (q₁ , q₀ , h)
+[]⁻¹ (ok⨟ q₀ q₁ h) = (q₁ , q₀ , h)
 
 ----------------------------------------------------------------------
 -- Version of the rule for context formation without helper hypothesis
 ----------------------------------------------------------------------
-[]⁻ :
+ok⨟⁻ :
   {l : Lvl}
   {Γ : Cx}
   {A : Ty}
@@ -163,4 +163,4 @@ okSb＝ ([] q _ _ _) = okSb＝ q
   → ----------------
   Ok (Γ ⨟ x ∶ A ⦂ l)
 
-[]⁻ q q' = [] q q' (⊢ok q)
+ok⨟⁻ q q' = ok⨟ q q' (⊢ok q)
