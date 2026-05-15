@@ -626,8 +626,8 @@ implies Γ ⊢ a ∶ A. We do this by simultaneously proving that
   → ---------------------
   Γ ⊢ˢ σ ∶ Γ'
 
-⊢sb₁ (◇ q) = ◇ˢ q
-⊢sb₁ ([] q₀ q₁ q₂ q₃) = ⨟ˢ (⊢sb₁ q₀) q₁ (⊢ty₁ q₂) q₃
+⊢sb₁ (＝◇ˢ q) = ◇ˢ q
+⊢sb₁ (＝⨟ˢ q₀ q₁ q₂ q₃) = ⨟ˢ (⊢sb₁ q₀) q₁ (⊢ty₁ q₂) q₃
 
 ⊢sb₂ :
   {Γ Γ' : Cx}
@@ -636,8 +636,8 @@ implies Γ ⊢ a ∶ A. We do this by simultaneously proving that
   → ---------------------
   Γ ⊢ˢ σ' ∶ Γ'
 
-⊢sb₂ (◇ q) = ◇ˢ q
-⊢sb₂ ([] q₀ q₁ q₂ q₃) = ⨟ˢ
+⊢sb₂ (＝◇ˢ q) = ◇ˢ q
+⊢sb₂ (＝⨟ˢ q₀ q₁ q₂ q₃) = ⨟ˢ
   (⊢sb₂ q₀)
   q₁
   (⊢conv (⊢ty₂ q₂) (＝sbTm q₀ q₁ (⊢sb₁ q₀)))

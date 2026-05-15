@@ -88,11 +88,11 @@ sb＝Ext :
   → --------------------------------
   Γ' ⊢ˢ σ' ＝ τ' ∶ Γ
 
-sb＝Ext (◇ q) _ _ = ◇ q
-sb＝Ext{σ'}{τ'} ([]{σ = σ}{τ}{A = A}{x} q₀ q₁ q₂ q₃) e e'
+sb＝Ext (＝◇ˢ q) _ _ = ＝◇ˢ q
+sb＝Ext{σ'}{τ'} (＝⨟ˢ{σ = σ}{τ}{A = A}{x} q₀ q₁ q₂ q₃) e e'
   rewrite sbRespSupp σ σ' A (λ x' p' → e x' (∈∪₁ (⊢supp q₁ (∈∪₁ p'))))
   | e x (∈∪₂ ∈｛｝)
-  | e' x (∈∪₂ ∈｛｝)= []
+  | e' x (∈∪₂ ∈｛｝)= ＝⨟ˢ
     (sb＝Ext q₀ (λ y r → e y (∈∪₁ r)) (λ y' r' → e' y' (∈∪₁ r')))
     q₁
     q₂
@@ -181,8 +181,8 @@ sbVar＝ :
   → --------------------------
   Γ' ⊢ σ x ＝ σ' x ∶ σ * A ⦂ l
 
-sbVar＝ ([] _ _ q _)  isInNew     = q
-sbVar＝ ([] q _ _ _) (isInOld q') = sbVar＝ q q'
+sbVar＝ (＝⨟ˢ _ _ q _)  isInNew     = q
+sbVar＝ (＝⨟ˢ q _ _ _) (isInOld q') = sbVar＝ q q'
 
 sbDom :
   {σ : Sb}
@@ -751,8 +751,8 @@ sb＝Refl :
   → ---------------
   Γ' ⊢ˢ σ ＝ σ ∶ Γ
 
-sb＝Refl (◇ˢ q) = ◇ q
-sb＝Refl (⨟ˢ q₀ q₁ q₂ q₃) = [] (sb＝Refl q₀) q₁ (Refl q₂) q₃
+sb＝Refl (◇ˢ q) = ＝◇ˢ q
+sb＝Refl (⨟ˢ q₀ q₁ q₂ q₃) = ＝⨟ˢ (sb＝Refl q₀) q₁ (Refl q₂) q₃
 
 ----------------------------------------------------------------------
 -- Properties of substitution update
@@ -797,7 +797,7 @@ sb＝Update :
   → ------------------------------------------------------
   Γ' ⊢ˢ (σ ∘/ x := a) ＝ (σ' ∘/ x := a') ∶ (Γ ⨟ x ∶ A ⦂ l)
 
-sb＝Update{l}{Γ' = Γ'}{σ}{σ'}{A}{a}{a'}{x} σ=σ' a=a' x#Γ ⊢A = []
+sb＝Update{l}{Γ' = Γ'}{σ}{σ'}{A}{a}{a'}{x} σ=σ' a=a' x#Γ ⊢A = ＝⨟ˢ
   (sb＝Ext σ=σ'
     (λ y r →
       symm (:=Neq {f = σ} x y λ{refl → ∉→¬∈ x#Γ r }))
@@ -919,7 +919,7 @@ lift＝Sb :
     (σ ∘/ x := 𝐯 x') ＝ (σ' ∘/ x := 𝐯 x') ∶ (Γ ⨟ x ∶ A ⦂ l)
 
 lift＝Sb{l}{σ}{σ'}{Γ}{Γ'}{A}{x}{x'} p q x#Γ x'#Γ h =
-  [] (▷＝Sb x' (sbJg h q) p' x'#Γ) q q'' x#Γ
+  ＝⨟ˢ (▷＝Sb x' (sbJg h q) p' x'#Γ) q q'' x#Γ
   where
   p' : Γ' ⊢ˢ (σ ∘/ x := 𝐯 x') ＝ (σ' ∘/ x := 𝐯 x') ∶ Γ
   p' = sb＝Ext p
