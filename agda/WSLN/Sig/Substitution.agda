@@ -36,6 +36,29 @@ idʳ = id
 𝐚∘ : Rn → Sb
 𝐚∘ ρ = 𝐚 ∘ ρ
 
+-- Updated renaming
+updateRen :
+  (ρ : Rn)
+  (x x' y : 𝔸)
+  → -----------------------------------------
+  (𝐚∘ ρ ∘/ x := 𝐚 x') y ≡ 𝐚∘ (ρ ∘/ x := x') y
+updateRen _ x _ y with x ≐ y
+... | no _  = refl
+... | yes _ = refl
+
+updateRen² :
+  (ρ : Rn)
+  (x x' y y' z : 𝔸)
+  → ------------------------------------
+  ((𝐚∘ ρ ∘/ x := 𝐚 x') ∘/ y := 𝐚 y') z ≡
+  𝐚∘((ρ ∘/ x := x') ∘/ y := y') z
+
+updateRen² _ x _ y _ z with y ≐ z
+... | no _  = updateRen _ x _ z
+... | yes _ with x ≐ z
+... | no _  = refl
+... | yes _ = refl
+
 --------------------------------------------------------------------
 -- Action of substitutions and renamings on terms
 --------------------------------------------------------------------
@@ -275,12 +298,26 @@ updateRn :
   → --------------------------------------------
   (𝐚∘ ρ ∘/ x := 𝐚 x') * t ≡ 𝐚∘(ρ ∘/ x := x') * t
 updateRn ρ x x' t =
-  sbRespSupp (𝐚∘ ρ ∘/ x := 𝐚 x') (𝐚∘ (ρ ∘/ x := x')) t f
-  where
-  f : ∀ y → y ∈ supp t → (𝐚∘ ρ ∘/ x := 𝐚 x') y ≡ 𝐚∘ (ρ ∘/ x := x') y
-  f y _ with x ≐ y
-  ... | no _  = refl
-  ... | yes _ = refl
+  sbRespSupp
+  (𝐚∘ ρ ∘/ x := 𝐚 x')
+  (𝐚∘ (ρ ∘/ x := x'))
+  t
+  λ y _ → updateRen ρ x x' y
+
+updateRn² :
+  {n : ℕ}
+  (ρ : Rn)
+  (x x' y y' : 𝔸)
+  (t : Trm[ n ])
+  → --------------------------------------
+  ((𝐚∘ ρ ∘/ x := 𝐚 x') ∘/ y := 𝐚 y') * t ≡
+  𝐚∘((ρ ∘/ x := x') ∘/ y := y') * t
+
+updateRn² ρ x x' y y' t = sbRespSupp
+  ((𝐚∘ ρ ∘/ x := 𝐚 x') ∘/ y := 𝐚 y')
+  (𝐚∘((ρ ∘/ x := x') ∘/ y := y') )
+  t
+  λ z _ → updateRen² ρ x x' y y' z
 
 updateId :
   {n : ℕ}

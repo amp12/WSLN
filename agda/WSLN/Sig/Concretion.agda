@@ -378,9 +378,22 @@ rnUpdate[] :
   (ρ ∘/ x := x') * (t [ x ]) ≡ (ρ * t) [ x' ]
 
 rnUpdate[] ρ x x' t x#
-  rewrite sb[] (𝐚∘ (ρ ∘/ x := x')) t (𝐚 x)
-  | :=Eq {f = ρ}{x'} x
-  | updateFreshRn ρ x x' t x# = refl
+  rewrite symm (updateRn ρ x x' (t [ x ])) =
+  sbUpdate[] (𝐚∘ ρ) x (𝐚 x') t x#
+
+rnUpdate[]² :
+  {n : ℕ}
+  (ρ : Rn)
+  (x x' y y' : 𝔸)
+  (t : Trm[ 2+ n ])
+  (_ : x # t)
+  (_ : y # (t , x))
+  → -------------------------------------------------------------
+  ((ρ ∘/ x := x') ∘/ y := y')* t [ x ][ y ] ≡ (ρ * t)[ x' ][ y' ]
+
+rnUpdate[]² ρ x x' y y' t
+  rewrite symm (updateRn² ρ x x' y y' (t [ x ] [ y ])) =
+  sbUpdate[]² (𝐚∘ ρ) x y (𝐚 x') (𝐚 y') t
 
 ssb[] :
   {n : ℕ}
@@ -405,8 +418,8 @@ ssb[]² :
   → ----------------------------------------------
   (x := u ∘/ y := v) * t [ x ][ y ] ≡ t [ u ][ v ]
 
-ssb[]² x y u v t x#t y#tx
-  rewrite sbUpdate[]² idˢ x y u v t x#t y#tx
+ssb[]² x y u v t x# y#
+  rewrite sbUpdate[]² id x y u v t x# y#
   | sbUnit t = refl
 
 srn[] :
@@ -419,4 +432,17 @@ srn[] :
 
 srn[] x x' t x#
   rewrite  rnUpdate[] id x x' t x#
+  | rnUnit t = refl
+
+srn[]² :
+  {n : ℕ}
+  (x x' y y' : 𝔸)
+  (t : Trm[ 2+ n ])
+  (_ : x # t)
+  (_ : y # (t , x))
+  → --------------------------------------------------
+  (x := x' ∘/ y := y') * t [ x ][ y ] ≡ t [ x' ][ y' ]
+
+srn[]² x x' y y' t x# y#
+  rewrite rnUpdate[]² id x x' y y' t x# y#
   | rnUnit t = refl
