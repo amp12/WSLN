@@ -1,6 +1,6 @@
 module Prelude.Level where
 
-open import Agda.Primitive renaming (lzero to ℓ₀; lsuc to ℓ₁+) public
+open import Agda.Primitive public
 
 ----------------------------------------------------------------------
 -- Lifting from one universe to a larger one
@@ -11,8 +11,11 @@ record Lift {l : Level}(l' : Level) (A : Set l) : Set (l ⊔ l') where
 
 open Lift public
 
+ℓ₀ : Level
+ℓ₀ = lzero
+
 ℓ₁ : Level
-ℓ₁ = ℓ₁+ ℓ₀
+ℓ₁ = lsuc ℓ₀
 
 ℓ₂ : Level
-ℓ₂ = ℓ₁+ ℓ₁
+ℓ₂ = lsuc ℓ₁

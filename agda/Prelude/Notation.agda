@@ -9,8 +9,8 @@ record Member
   {l m : Level}
   (A : Set l)
   (B : Set m)
-  : --------------
-  Set (ℓ₁+(l ⊔ m))
+  : ---------------
+  Set (lsuc(l ⊔ m))
   where
   constructor mkMember
   infix 4 _∈_ _∉_
@@ -26,7 +26,7 @@ open Member ⦃ ... ⦄ public
 ---------------------------------------------------------------------
 -- Notation for not equals
 ----------------------------------------------------------------------
-record NotEq {l : Level}(A : Set l) : Set (ℓ₁+ l) where
+record NotEq {l : Level}(A : Set l) : Set (lsuc l) where
   constructor mkNotEq
   infix 4 _≠_
   field
