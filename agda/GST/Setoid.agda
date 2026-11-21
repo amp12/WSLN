@@ -8,7 +8,6 @@ open import Prelude
 record Setd : Set₁ where
   constructor mkSetd
   infix 4 _∋_~_
-  infix 8 ∣_∣
   field
     ∣_∣   : Set
     _∋_~_ : ∣_∣ → ∣_∣ → Set
@@ -40,7 +39,6 @@ open Setd public
 ----------------------------------------------------------------------
 -- Morphism of setoids
 ----------------------------------------------------------------------
-infix 6 Setd[_⟶_]
 record Setd[_⟶_] (A B : Setd) : Set
   where
   constructor mkSetd[⟶]

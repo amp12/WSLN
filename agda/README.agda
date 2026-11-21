@@ -6,7 +6,7 @@ module README where
   adequacy of this style of representation with respect to naïve
   nameful syntax modulo α-conversion and some examples of its use.
 
-Checked with Agda version 2.8.0 using flags
+Checked with Agda version 2.9.0 using flags
   --safe
   --without-K
 

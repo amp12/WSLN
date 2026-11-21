@@ -11,7 +11,6 @@ open import WSLN.Sig.Sig
 -- Scoped set of terms over a binding signature
 ----------------------------------------------------------------------
 module _ ⦃ Σ : Sig ⦄ where
-  infix 1 Trm[_] Arg[_]
   data Trm[_]
     -- terms over Σ in scope n ("n-terms")
     (n : ℕ)

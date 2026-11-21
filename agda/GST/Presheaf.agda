@@ -20,7 +20,6 @@ open import GST.NormalForm
 -- Objects are contexts
 
 -- Set of morphisms
-infix 6 ℝ[_⟶_]
 record ℝ[_⟶_] (Γ' Γ : Cx) : Set where
   constructor mkℝ[⟶]
   field
@@ -127,7 +126,6 @@ open ℝ^  public
 ----------------------------------------------------------------------
 -- Natural transformations
 ----------------------------------------------------------------------
-infix 6 ℝ^[_⟶_]
 record ℝ^[_⟶_] (A B : ℝ^) : Set where
   constructor mkℝ^[⟶]
   field

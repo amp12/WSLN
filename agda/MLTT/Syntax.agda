@@ -62,7 +62,6 @@ instance
 ----------------------------------------------------------------------
 -- Terms of Martin-Löf Type Theory
 ----------------------------------------------------------------------
-infix 6 Tm[_]
 Tm[_] : ℕ → Set
 
 Tm[ n ] = Trm[_] ⦃ MLTT ⦄ n
@@ -72,7 +71,6 @@ Tm : Set
 Tm = Trm[_] ⦃ MLTT ⦄ 0
 
 -- Types are particular kinds of term
-infix 6 Ty[_]
 Ty[_] : ℕ → Set
 
 Ty[ n ] = Tm[ n ]

@@ -36,7 +36,6 @@ data NomArg where
     → ---------------
     NomArg (m :: ms)
 
-infixr 5 ⟨_,_⟩
 data NomBnd where
   ⟨⟩ :
     (M : NomTrm)

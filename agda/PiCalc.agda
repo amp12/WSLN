@@ -49,7 +49,6 @@ pattern 𝐎 = 𝐨 ′null′ []
 ----------------------------------------------------------------------
 -- Well-formed processes
 ----------------------------------------------------------------------
-infix 3 ⊢_proc
 data ⊢_proc : Trm → Set where
   -- input prefixed process
   In :

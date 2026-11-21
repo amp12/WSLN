@@ -68,7 +68,6 @@ syntax ∑-syntax A (λ x → B) = ∑[ x ∈ A ] B
   ∑i x (∑i y z) ≡ ∑i x' (∑i y' z')
 ∑ext₂ refl refl refl = refl
 
-infix 6 ⟨_,_⟩∑
 ⟨_,_⟩∑ :
   {l m n : Level}
   {A : Set l}
