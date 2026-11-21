@@ -9,13 +9,14 @@
 
 ### [Browsable code](https://amp12.github.io/WSLN/html/README.html)
 
-Checked with Agda version 2.8.0 using flags
+Checked with Agda version 2.9.0 using flags
   `--safe`
   `--without-K`
   
 ### [Accompanying paper](https://arxiv.org/abs/2605.08990)
 
-When using interactive theorem provers based on dependent type theory to define and reason about languages involving binding constructs, we advocate the use of a well-scoped version of the locally nameless method of representing syntax. This paper describes generic code parameterized by a Plotkin-style binding signature for this style of syntax representation within the Agda theorem prover, gives a proof of its adequacy with respect to naive nameful syntax modulo alpha-conversion and discusses some examples of its use.
+When using interactive theorem provers based on dependent type theory to define and reason about languages involving binding constructs, we
+advocate the use of a well-scoped version of the locally nameless method of representing syntax. This paper describes generic code for this style of syntax representation within the Agda theorem prover, parameterized by a notion of binding signature due to Aczel and Plotkin. It gives a proof of its adequacy with respect to naïve nameful syntax modulo α-conversion and discusses some examples of its use.
 
 ### Examples of using the WSLN library
 
