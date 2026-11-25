@@ -4,7 +4,7 @@ open import WSLN.Index
 open import WSLN.Atom
 open import WSLN.Fresh
 open import WSLN.Sig.Sig
-open import WSLN.Sig.Term
+open import WSLN.Sig.Trm
 open import WSLN.Sig.Substitution
 open import WSLN.Sig.Concretion
 

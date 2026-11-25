@@ -19,7 +19,7 @@ open import WSLN.Sig.Sig public
 signature -}
 
 -- Scoped set of terms over a Plotkin binding signature
-open import WSLN.Sig.Term public
+open import WSLN.Sig.Trm public
 
 -- Term-for-name substitution
 open import WSLN.Sig.Substitution public

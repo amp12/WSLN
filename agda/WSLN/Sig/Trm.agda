@@ -1,4 +1,4 @@
-module WSLN.Sig.Term where
+module WSLN.Sig.Trm where
 
 open import Prelude
 

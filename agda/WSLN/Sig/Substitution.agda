@@ -5,7 +5,7 @@ open import WSLN.Atom
 open import WSLN.Fresh
 
 open import WSLN.Sig.Sig
-open import WSLN.Sig.Term
+open import WSLN.Sig.Trm
 
 module WSLN.Sig.Substitution ⦃ Σ : Sig ⦄ where
 
