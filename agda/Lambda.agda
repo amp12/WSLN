@@ -12,22 +12,22 @@ open import WSLN public
 
 -- Declare a suitable binding signature for untyped λ-calculus.
 instance
-  WSLN : Sig
-  WSLN = mkSig OpWSLN arWSLN
+  LAM : Sig
+  LAM = mkSig OpLAM arLAM
     module _ where
     -- Operators
-    data OpWSLN : Set where
+    data OpLAM : Set where
       -- function abstraction
-      ′lm′ : OpWSLN
+      ′lm′ : OpLAM
       -- function application
-      ′ap′ :  OpWSLN
+      ′ap′ :  OpLAM
 
     -- Arities
-    arWSLN : OpWSLN → List ℕ
+    arLAM : OpLAM → List ℕ
     -- function abstraction take one argument, binding one name
-    arWSLN ′lm′ = 1 :: []
+    arLAM ′lm′ = 1 :: []
     -- function application takes two aruments, each binding no names
-    arWSLN ′ap′ = 0 :: 0 :: []
+    arLAM ′ap′ = 0 :: 0 :: []
 
 {- WSLN provides an ℕ-indexed type Trm[ n ] of n-terms over the
 signature with constructors 𝐢 for scoped deBruijn indices (Fin n), 𝐚

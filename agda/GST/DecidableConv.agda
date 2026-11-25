@@ -30,7 +30,7 @@ open import GST.Normalization
   → ------------
   Dec(Γ ⊢ a ∶ A)
 
-{- Since a concretion "b ❪ x ]" is not a substructure of the
+{- Since a concretion "b [ x ]" is not a substructure of the
 expression "b", but has the same size, we proceed by induction on the
 size of expressions, rather than by structural induction. -}
 
