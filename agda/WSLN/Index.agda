@@ -55,7 +55,7 @@ open Scoped ⦃ ... ⦄ public
 ----------------------------------------------------------------------
 -- Scoped set of deBruijn indices
 ----------------------------------------------------------------------
-{- The indicies with scope n : ℕ are the elements of the finite set
+{- The indices with scope n : ℕ are the elements of the finite set
 Fin n. There are several ways to insert Fin m into Fin n, given m ≤ n.
 Here we need the one that injects Fin m as the initial segment of
 Fin n. -}
